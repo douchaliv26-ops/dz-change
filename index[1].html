@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cours DZD — Observatoire du dinar algérien · Officiel & parallèle</title>
+<meta name="description" content="Suivez le dinar algérien (DZD) face à l'euro, au dollar et aux principales devises : taux officiel de la Banque d'Algérie, estimation du marché parallèle, historique sur 10 ans et scénarios 2027-2030.">
+<meta name="theme-color" content="#080D0A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080D0A'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%235BE0A4' stroke-width='2'/%3E%3Ctext x='32' y='39' font-family='monospace' font-size='15' fill='%23EDF2EC' text-anchor='middle'%3EDZD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style>
+  :root{
+    --bg:#080D0A;
+    --bg-2:#0B120E;
+    --surface:#0F1712;
+    --surface-2:#131D17;
+    --surface-3:#18241D;
+    --line:rgba(232,240,233,.10);
+    --line-2:rgba(232,240,233,.18);
+    --text:#EDF2EC;
+    --text-2:#B9C5BC;
+    --muted:#84948A;
+    --muted-2:#66756B;
+    --green:#5BE0A4;
+    --green-2:#2FA97A;
+    --green-dim:rgba(91,224,164,.12);
+    --red:#FF7557;
+    --red-2:#D94E33;
+    --red-dim:rgba(255,117,87,.12);
+    --gold:#E8C87C;
+    --gold-dim:rgba(232,200,124,.12);
+    --serif:'Instrument Serif',Georgia,serif;
+    --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --r:18px;
+    --r-sm:12px;
+    --shell:1320px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+    font-size:16px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(1100px 620px at 82% -8%,rgba(91,224,164,.075),transparent 62%),
+      radial-gradient(900px 520px at 0% 2%,rgba(255,117,87,.045),transparent 60%);
+    background-repeat:no-repeat;
+  }
+  body.locked{overflow:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  h1,h2,h3,h4,p,figure{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  ::selection{background:var(--green);color:#07100B}
+  :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+  .shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:clamp(18px,4vw,48px)}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .serif{font-family:var(--serif);font-weight:400}
+  .muted{color:var(--muted)}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .up{color:var(--green)}
+  .down{color:var(--red)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip{position:fixed;left:16px;top:-70px;z-index:400;background:var(--green);color:#07100B;padding:10px 18px;border-radius:999px;font-weight:600;font-size:13px;transition:top .2s}
+  .skip:focus{top:14px}
+  .grain{position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--green),var(--gold));z-index:300;transition:width .1s linear}
+
+  /* ---------- header ---------- */
+  .site-header{position:fixed;inset:0 0 auto 0;z-index:150;transition:background .35s var(--ease),border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
+  .site-header.scrolled{background:rgba(8,13,10,.82);backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;height:76px}
+  .brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+  .brand-mark{width:38px;height:38px;flex-shrink:0;display:grid;place-items:center}
+  .brand-mark svg{width:100%;height:100%;display:block}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.05}
+  .brand-name{font-family:var(--serif);font-size:23px;letter-spacing:-.01em}
+  .brand-name span{color:var(--green)}
+  .brand-sub{font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav-desktop{display:flex;align-items:center;gap:clamp(14px,2.2vw,30px)}
+  .nav-link{position:relative;font-size:13px;color:var(--text-2);padding:6px 0;transition:color .25s}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--green);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .nav-link:hover,.nav-link.active{color:var(--text)}
+  .nav-link:hover::after,.nav-link.active::after{transform:scaleX(1);transform-origin:left}
+  .header-actions{display:flex;align-items:center;gap:10px}
+  .status-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line-2);border-radius:999px;padding:7px 12px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);white-space:nowrap;background:rgba(15,23,18,.5)}
+  .status-pill i{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0;transition:background .3s,box-shadow .3s}
+  .status-pill.live i{background:var(--green);box-shadow:0 0 0 3px rgba(91,224,164,.14)}
+  .status-pill.loading i{background:var(--gold);animation:blink 1.1s infinite}
+  .status-pill.demo i{background:var(--red)}
+  @keyframes blink{50%{opacity:.3}}
+  .icon-btn{width:38px;height:38px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--text-2);transition:background .25s,color .25s,border-color .25s,transform .3s}
+  .icon-btn:hover{background:var(--surface-3);color:var(--text);border-color:var(--line-2)}
+  .icon-btn svg{width:15px;height:15px}
+  .icon-btn.spinning svg{animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .menu-btn{display:none;width:40px;height:40px;border:1px solid var(--line-2);border-radius:50%;position:relative}
+  .menu-btn span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--text);transition:transform .35s var(--ease),top .35s var(--ease)}
+  .menu-btn span:first-child{top:16px}
+  .menu-btn span:last-child{top:22px}
+  .menu-btn[aria-expanded="true"] span:first-child{top:19px;transform:rotate(45deg)}
+  .menu-btn[aria-expanded="true"] span:last-child{top:19px;transform:rotate(-45deg)}
+  .mobile-menu{position:fixed;inset:0;z-index:140;background:var(--bg);padding:104px clamp(20px,6vw,48px) 36px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;overflow-y:auto;clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .55s var(--ease),visibility .55s}
+  .mobile-menu.open{clip-path:inset(0 0 0 0);visibility:visible}
+  .mobile-menu nav{display:flex;flex-direction:column}
+  .mobile-menu nav a{font-family:var(--serif);font-size:clamp(2rem,8vw,2.8rem);line-height:1.1;display:flex;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(16px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .mobile-menu.open nav a{opacity:1;transform:none}
+  .mobile-menu nav a .num{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.1em}
+  .mobile-menu-foot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:999px;padding:13px 22px;font-size:13.5px;font-weight:500;line-height:1;border:1px solid transparent;transition:background .3s var(--ease),color .3s,border-color .3s,transform .3s var(--ease);white-space:nowrap}
+  .btn svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+  .btn:hover svg{transform:translate(2px,-2px)}
+  .btn-primary{background:var(--green);color:#07100B}
+  .btn-primary:hover{background:#7BEBB8;transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line-2);color:var(--text)}
+  .btn-ghost:hover{background:var(--surface-3);border-color:rgba(232,240,233,.3);transform:translateY(-2px)}
+  .btn-sm{padding:10px 16px;font-size:12px}
+  .link-arrow{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);border-bottom:1px solid var(--line-2);padding-bottom:5px;transition:color .25s,border-color .25s}
+  .link-arrow:hover{color:var(--green);border-color:var(--green)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding-top:clamp(112px,14vh,150px);padding-bottom:clamp(36px,5vw,56px);display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(30px,4.5vw,64px);align-items:center}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(232,240,233,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,240,233,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 20%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 20%,#000 20%,transparent 78%)}
+  .hero-copy{position:relative;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);border-radius:999px;padding:7px 13px 7px 8px;background:rgba(15,23,18,.55);font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
+  .flag-dot{display:inline-flex;align-items:center;justify-content:center;width:20px;height:14px;border-radius:3px;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 1px rgba(232,240,233,.16)}
+  .flag-dot::before{content:"";position:absolute;left:0;top:0;bottom:0;width:50%;background:#0B6B4F}
+  .flag-dot::after{content:"";position:absolute;right:0;top:0;bottom:0;width:50%;background:#F4F1E8}
+  .flag-dot{position:relative}
+  .flag-dot i{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);color:#D21034;font-size:9px;line-height:1}
+  .hero-title{font-family:var(--serif);font-weight:400;font-size:clamp(3.1rem,6.4vw,5.9rem);line-height:.94;letter-spacing:-.035em;margin-top:22px}
+  .hero-title em{font-style:italic;color:var(--green);position:relative;white-space:nowrap}
+  .hero-title em::after{content:"";position:absolute;left:1%;right:0;bottom:.02em;height:.055em;background:var(--green);opacity:.28;border-radius:2px}
+  .hero-lede{max-width:50ch;margin-top:22px;font-size:clamp(14.5px,1.2vw,16.5px);line-height:1.7;color:var(--text-2)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .hero-meta svg{width:12px;height:12px;color:var(--green);flex-shrink:0}
+  .hero-card{position:relative;z-index:1;background:linear-gradient(165deg,rgba(91,224,164,.07),transparent 42%),var(--surface);border:1px solid var(--line-2);border-radius:22px;padding:clamp(18px,2.4vw,26px);box-shadow:0 30px 80px -40px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden}
+  .hero-card::before{content:"";position:absolute;top:-120px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(91,224,164,.16),transparent 68%);pointer-events:none}
+  .hc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative}
+  .hc-pair{display:flex;align-items:center;gap:9px}
+  .hc-flag{width:30px;height:30px;border-radius:50%;background:var(--surface-3);border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--serif);font-size:15px;color:var(--green)}
+  .hc-pair b{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.04em}
+  .hc-pair span{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .live-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid rgba(91,224,164,.28);background:var(--green-dim);border-radius:999px;padding:5px 9px}
+  .live-badge i{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.8s infinite}
+  .live-badge.demo{color:var(--gold);border-color:rgba(232,200,124,.3);background:var(--gold-dim)}
+  .live-badge.demo i{background:var(--gold);animation:none}
+  .noscript-banner{background:rgba(232,200,124,.08);border-bottom:1px solid rgba(232,200,124,.25);color:var(--gold);padding:11px 18px;text-align:center;font-size:12px;line-height:1.5}
+  .hc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;position:relative}
+  .hc-cell{border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:rgba(8,13,10,.35)}
+  .hc-cell .lbl{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .hc-cell .lbl i{width:5px;height:5px;border-radius:50%;background:var(--green)}
+  .hc-cell.par .lbl i{background:var(--red)}
+  .hc-cell .val{font-family:var(--mono);font-size:clamp(1.35rem,2.4vw,1.85rem);font-weight:500;letter-spacing:-.04em;line-height:1.1;margin-top:7px}
+  .hc-cell .sub{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:5px;font-family:var(--mono);font-size:8.5px;color:var(--muted)}
+  .hc-cell .sub b{font-weight:500}
+  .hc-spark{margin-top:16px;position:relative}
+  .hc-spark svg{width:100%;height:64px;display:block;overflow:visible}
+  .hc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--muted);position:relative;flex-wrap:wrap}
+  .hc-foot b{color:var(--gold);font-weight:500}
+  .hc-note{display:flex;align-items:flex-start;gap:7px;margin-top:12px;font-size:10px;line-height:1.5;color:var(--muted-2);position:relative}
+  .hc-note svg{width:11px;height:11px;flex-shrink:0;margin-top:2px;color:var(--muted)}
+
+  /* ---------- ticker ---------- */
+  .ticker-wrap{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(11,18,14,.6);overflow:hidden}
+  .ticker-wrap::after{content:"";position:absolute;top:0;right:0;bottom:0;width:70px;background:linear-gradient(90deg,transparent,var(--bg));pointer-events:none;z-index:2}
+  .ticker{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity}
+  .ticker::-webkit-scrollbar{display:none}
+  .tick{flex:0 0 auto;width:196px;padding:13px 18px;border-right:1px solid var(--line);text-align:left;scroll-snap-align:start;transition:background .25s;position:relative}
+  .tick:hover{background:rgba(232,240,233,.03)}
+  .tick.active{background:rgba(91,224,164,.06)}
+  .tick.active::before{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--green)}
+  .tick-code{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted)}
+  .tick-code b{color:var(--text-2);font-weight:500}
+  .tick-vals{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+  .tick-vals b{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:-.03em}
+  .tick-vals span{font-family:var(--mono);font-size:10px;color:var(--red)}
+  .tick-delta{font-family:var(--mono);font-size:8.5px;margin-top:2px;display:block}
+  .tick-label{display:flex;align-items:center;justify-content:space-between;gap:8px}
+
+  /* ---------- sections ---------- */
+  .section{padding-block:clamp(58px,7.5vw,100px);position:relative}
+  section[id]{scroll-margin-top:92px}
+  .section-tight{padding-top:0}
+  .section-head{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,4vw,60px);align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+  .sec-label{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .sec-label .n{color:var(--green)}
+  .sec-label .rule{width:34px;height:1px;background:var(--line-2)}
+  .sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(2.15rem,4.2vw,3.5rem);line-height:1.02;letter-spacing:-.025em;margin-top:14px}
+  .sec-title em{font-style:italic;color:var(--green)}
+  .sec-intro{font-size:14.5px;line-height:1.7;color:var(--muted);max-width:46ch}
+  .sec-intro b{color:var(--text-2);font-weight:500}
+
+  /* ---------- cards ---------- */
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.018),transparent 40%),var(--surface);border:1px solid var(--line);border-radius:var(--r);position:relative}
+  .card-pad{padding:clamp(16px,2.2vw,24px)}
+  .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .card-title{font-family:var(--serif);font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:400;line-height:1.15;letter-spacing:-.01em}
+  .card-sub{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line-2);border-radius:999px;padding:5px 9px;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .badge.est{color:var(--gold);border-color:rgba(232,200,124,.28);background:var(--gold-dim)}
+  .badge.green{color:var(--green);border-color:rgba(91,224,164,.28);background:var(--green-dim)}
+  .badge.red{color:var(--red);border-color:rgba(255,117,87,.28);background:var(--red-dim)}
+
+  /* ---------- KPIs ---------- */
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .kpi{padding:16px 16px 14px;overflow:hidden;transition:border-color .3s,transform .3s var(--ease)}
+  .kpi:hover{border-color:var(--line-2);transform:translateY(-2px)}
+  .kpi-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .kpi-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .kpi-label i{width:5px;height:5px;border-radius:50%;background:var(--green)}
+  .kpi-label.red i{background:var(--red)}
+  .kpi-label.gold i{background:var(--gold)}
+  .kpi-val{font-family:var(--mono);font-size:clamp(1.45rem,2.5vw,2rem);font-weight:500;letter-spacing:-.05em;line-height:1.1;margin-top:12px;display:flex;align-items:baseline;gap:5px}
+  .kpi-val small{font-size:9px;font-weight:400;letter-spacing:.06em;color:var(--muted)}
+  .kpi-delta{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:9px;margin-top:5px;padding:3px 7px;border-radius:999px;background:var(--surface-3);color:var(--text-2)}
+  .kpi-delta.up{color:var(--green);background:var(--green-dim)}
+  .kpi-delta.down{color:var(--red);background:var(--red-dim)}
+  .kpi-spark{margin-top:10px;height:30px}
+  .kpi-spark svg{width:100%;height:100%;display:block;overflow:visible}
+  .kpi-foot{font-family:var(--mono);font-size:8px;letter-spacing:.05em;color:var(--muted-2);margin-top:8px;line-height:1.5}
+  .gauge{display:flex;align-items:center;gap:2px;height:7px;border-radius:999px;overflow:hidden;margin-top:14px;background:var(--surface-3)}
+  .gauge .g1{background:var(--green);height:100%}
+  .gauge .g2{background:var(--red);height:100%}
+  .gauge-legend{display:flex;justify-content:space-between;gap:8px;margin-top:6px;font-family:var(--mono);font-size:8px;color:var(--muted)}
+
+  /* ---------- dashboard grid ---------- */
+  .dash-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:16px;align-items:stretch}
+  .chart-card{display:flex;flex-direction:column;min-width:0}
+  .tabs{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+  .tab{border:1px solid transparent;border-radius:999px;padding:6px 11px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;color:var(--muted);transition:background .25s,color .25s,border-color .25s}
+  .tab:hover{color:var(--text);border-color:var(--line-2)}
+  .tab.active{background:var(--green);color:#07100B;border-color:var(--green)}
+  .chart-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .chart-pair{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .chart-pair b{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.02em}
+  .chart-pair .val{font-family:var(--mono);font-size:19px;letter-spacing:-.04em;color:var(--green)}
+  .chart-pair .val.par{color:var(--red);font-size:14px}
+  .chart-pair .sep{color:var(--muted-2);font-size:10px}
+  .chart-pair .chg{font-family:var(--mono);font-size:9px;padding:3px 7px;border-radius:999px}
+  .seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:2px;background:rgba(8,13,10,.4)}
+  .seg button{border-radius:999px;padding:5px 10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:background .25s,color .25s}
+  .seg button.active{background:var(--surface-3);color:var(--text)}
+  .seg button:hover{color:var(--text)}
+  .chart-wrap{position:relative;height:318px;margin-top:12px}
+  .chart-wrap canvas{width:100%!important;height:100%!important;display:block}
+  .chart-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:12px;color:var(--muted);border:1px dashed var(--line-2);border-radius:12px;line-height:1.6}
+  .chart-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;color:var(--muted)}
+  .chart-legend span{display:inline-flex;align-items:center;gap:6px}
+  .chart-legend i{width:14px;height:2px;border-radius:2px;background:var(--green);display:inline-block}
+  .chart-legend i.par{background:var(--red)}
+  .chart-legend i.gold{background:var(--gold)}
+  .chart-legend .src{margin-left:auto;color:var(--muted-2);text-transform:uppercase;letter-spacing:.08em}
+
+  /* ---------- converter ---------- */
+  .converter{display:flex;flex-direction:column}
+  .conv-market{display:flex;gap:4px;margin-top:14px;border:1px solid var(--line-2);border-radius:999px;padding:3px;background:rgba(8,13,10,.4)}
+  .conv-market button{flex:1;border-radius:999px;padding:7px 8px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:background .25s,color .25s}
+  .conv-market button.active{background:var(--surface-3);color:var(--text)}
+  .conv-market button.active[data-market="parallel"]{color:var(--red)}
+  .conv-field{margin-top:14px}
+  .conv-label{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .conv-input-row{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:12px;padding:5px 5px 5px 12px;background:rgba(8,13,10,.45);transition:border-color .25s,background .25s}
+  .conv-input-row:focus-within{border-color:rgba(91,224,164,.5);background:rgba(8,13,10,.7)}
+  .conv-input-row input{flex:1;min-width:0;background:transparent;border:0;color:var(--text);font-family:var(--mono);font-size:18px;letter-spacing:-.03em;padding:7px 0;outline:none}
+  .conv-input-row input::placeholder{color:var(--muted-2)}
+  .conv-input-row .cur-select{border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--text);font-family:var(--mono);font-size:10px;padding:7px 22px 7px 8px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2384948A' stroke-width='1.2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 7px center;cursor:pointer;outline:none}
+  .conv-swap{display:flex;justify-content:center;margin:8px 0}
+  .conv-swap button{width:28px;height:28px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:background .25s,color .25s,transform .3s}
+  .conv-swap button:hover{background:var(--surface-3);color:var(--green);transform:rotate(180deg)}
+  .conv-swap svg{width:12px;height:12px}
+  .conv-result{margin-top:14px;border:1px solid rgba(91,224,164,.22);background:linear-gradient(150deg,rgba(91,224,164,.08),rgba(8,13,10,.2));border-radius:14px;padding:14px 15px}
+  .conv-result .lbl{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .conv-result .big{display:flex;align-items:baseline;gap:7px;margin-top:4px;flex-wrap:wrap}
+  .conv-result .big b{font-family:var(--mono);font-size:clamp(1.5rem,2.6vw,2rem);font-weight:500;letter-spacing:-.05em;line-height:1.15;word-break:break-all}
+  .conv-result .big span{font-family:var(--mono);font-size:10px;color:var(--green)}
+  .conv-rate{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px;padding-top:9px;border-top:1px solid rgba(232,240,233,.1);font-family:var(--mono);font-size:8.5px;color:var(--muted);flex-wrap:wrap}
+  .conv-rate b{color:var(--text-2);font-weight:500}
+  .conv-alt{margin-top:8px;font-family:var(--mono);font-size:8px;color:var(--muted-2);line-height:1.5}
+  .conv-note{display:flex;align-items:flex-start;gap:6px;margin-top:12px;font-size:10px;line-height:1.5;color:var(--muted-2)}
+  .conv-note svg{width:11px;height:11px;flex-shrink:0;margin-top:2px}
+
+  /* ---------- table ---------- */
+  .table-card{margin-top:16px;overflow:hidden}
+  .table-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .premium-control{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .premium-control label{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .premium-control output{font-family:var(--mono);font-size:10px;color:var(--gold);min-width:42px}
+  input[type="range"].slider{-webkit-appearance:none;appearance:none;width:120px;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--green),var(--gold),var(--red));outline:none;cursor:pointer}
+  input[type="range"].slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:13px;height:13px;border-radius:50%;background:var(--text);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--line-2);cursor:pointer}
+  input[type="range"].slider::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--text);border:2px solid var(--bg);cursor:pointer}
+  .reset-link{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line-2);padding-bottom:2px;transition:color .25s,border-color .25s}
+  .reset-link:hover{color:var(--green);border-color:var(--green)}
+  .table-scroll{overflow-x:auto;margin-top:4px;scrollbar-width:thin;scrollbar-color:var(--surface-3) transparent}
+  table.rates{width:100%;border-collapse:collapse;min-width:680px}
+  table.rates caption{text-align:left;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);padding:10px 0 4px}
+  table.rates th{text-align:left;padding:10px 12px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.rates th button{display:inline-flex;align-items:center;gap:5px;font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;padding:0;transition:color .2s}
+  table.rates th button:hover{color:var(--text)}
+  table.rates th .ind{font-size:8px;color:var(--muted-2)}
+  table.rates th[aria-sort="ascending"] .ind,table.rates th[aria-sort="descending"] .ind{color:var(--green)}
+  table.rates td{padding:11px 12px;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:middle;white-space:nowrap}
+  table.rates tbody tr{transition:background .2s}
+  table.rates tbody tr:hover{background:rgba(232,240,233,.025)}
+  table.rates tbody tr.selected{background:rgba(91,224,164,.055)}
+  table.rates tbody tr:last-child td{border-bottom:0}
+  .cur-cell{display:flex;align-items:center;gap:9px}
+  .cur-badge{width:27px;height:27px;border-radius:50%;background:var(--surface-3);border:1px solid var(--line-2);display:grid;place-items:center;font-family:var(--serif);font-size:12px;color:var(--text-2);flex-shrink:0}
+  .cur-cell b{display:block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.04em;line-height:1.2}
+  .cur-cell span{display:block;font-size:10px;color:var(--muted);line-height:1.3;margin-top:1px}
+  table.rates td.num{font-family:var(--mono);font-size:11.5px;letter-spacing:-.02em}
+  table.rates td.num.par{color:var(--red)}
+  .pill{display:inline-flex;align-items:center;border-radius:999px;padding:3px 7px;font-family:var(--mono);font-size:8.5px;background:var(--surface-3);color:var(--text-2)}
+  .pill.red{color:var(--red);background:var(--red-dim)}
+  .trend-cell{display:flex;align-items:center;gap:8px}
+  .trend-cell svg{width:64px;height:20px;flex-shrink:0;overflow:visible}
+  .trend-cell span{font-family:var(--mono);font-size:9px}
+  .row-btn{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:999px;padding:5px 9px;color:var(--text-2);transition:background .25s,color .25s,border-color .25s}
+  .row-btn:hover{background:var(--green);color:#07100B;border-color:var(--green)}
+  .table-note{display:flex;align-items:flex-start;gap:7px;margin-top:12px;font-size:10px;line-height:1.5;color:var(--muted-2)}
+  .table-note svg{width:11px;height:11px;flex-shrink:0;margin-top:2px}
+
+  /* ---------- history ---------- */
+  .history-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:16px;align-items:stretch}
+  .insight-list{display:flex;flex-direction:column;gap:0;margin-top:6px}
+  .insight{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .insight:last-child{border-bottom:0}
+  .insight .il{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.5}
+  .insight .iv{font-family:var(--mono);font-size:17px;letter-spacing:-.04em;white-space:nowrap}
+  .insight .iv.red{color:var(--red)}
+  .insight .iv.gold{color:var(--gold)}
+  .insight-note{margin-top:12px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(8,13,10,.35);font-size:11px;line-height:1.6;color:var(--text-2)}
+  .insight-note b{color:var(--green);font-weight:500}
+  .select-wrap{position:relative;display:inline-flex;align-items:center}
+  .select-wrap select{appearance:none;background:var(--surface-2);border:1px solid var(--line-2);border-radius:999px;color:var(--text);font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;padding:7px 28px 7px 11px;cursor:pointer;outline:none;transition:border-color .25s}
+  .select-wrap select:hover{border-color:rgba(232,240,233,.3)}
+  .select-wrap::after{content:"";position:absolute;right:11px;top:50%;width:6px;height:6px;border-right:1px solid var(--muted);border-bottom:1px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  .year-table-wrap{margin-top:16px;max-height:372px;overflow:auto;border:1px solid var(--line);border-radius:14px;scrollbar-width:thin;scrollbar-color:var(--surface-3) transparent}
+  table.years{width:100%;border-collapse:collapse;min-width:560px}
+  table.years caption{text-align:left;padding:12px 14px 8px;font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  table.years th{position:sticky;top:0;z-index:2;background:var(--surface-2);text-align:left;padding:9px 14px;font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:400;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.years td{padding:9px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:-.01em;white-space:nowrap}
+  table.years tbody tr:last-child td{border-bottom:0}
+  table.years tbody tr.current{background:rgba(91,224,164,.06)}
+  table.years tbody tr:hover{background:rgba(232,240,233,.025)}
+  table.years td:first-child{color:var(--text-2)}
+  table.years td.par{color:var(--red)}
+
+  /* ---------- forecast ---------- */
+  .forecast-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:16px;align-items:stretch}
+  .scenario-list{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+  .scenario{text-align:left;border:1px solid var(--line);border-radius:13px;padding:12px 13px;background:rgba(8,13,10,.3);transition:border-color .25s,background .25s,transform .25s var(--ease);position:relative;overflow:hidden}
+  .scenario:hover{border-color:var(--line-2);transform:translateY(-1px)}
+  .scenario.active{border-color:rgba(232,200,124,.45);background:linear-gradient(150deg,rgba(232,200,124,.07),rgba(8,13,10,.3))}
+  .scenario.active::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold)}
+  .scenario-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .scenario-name{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2)}
+  .scenario-name i{width:5px;height:5px;border-radius:50%;background:var(--muted)}
+  .scenario.central .scenario-name i{background:var(--gold)}
+  .scenario.pessimistic .scenario-name i{background:var(--red)}
+  .scenario.optimistic .scenario-name i{background:var(--green)}
+  .scenario-val{display:block;font-family:var(--mono);font-size:18px;letter-spacing:-.04em;margin-top:5px}
+  .scenario-val small{font-size:8px;color:var(--muted);letter-spacing:.04em;margin-left:3px}
+  .scenario-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:3px}
+  .scenario-change{font-family:var(--mono);font-size:8.5px;color:var(--red)}
+  .scenario-desc{display:block;font-size:10px;line-height:1.45;color:var(--muted);margin-top:5px}
+  .forecast-note{display:flex;align-items:flex-start;gap:8px;margin-top:14px;padding:12px 14px;border:1px solid rgba(232,200,124,.2);border-radius:12px;background:rgba(232,200,124,.04);font-size:11px;line-height:1.6;color:var(--text-2)}
+  .forecast-note svg{width:13px;height:13px;flex-shrink:0;margin-top:2px;color:var(--gold)}
+
+  /* ---------- method ---------- */
+  .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .method{padding:20px 18px;display:flex;flex-direction:column;gap:10px;transition:border-color .3s,transform .3s var(--ease)}
+  .method:hover{border-color:var(--line-2);transform:translateY(-2px)}
+  .method-icon{width:38px;height:38px;border-radius:11px;border:1px solid var(--line-2);background:var(--surface-2);display:grid;place-items:center;color:var(--green)}
+  .method-icon svg{width:17px;height:17px}
+  .method h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;line-height:1.2}
+  .method p{font-size:12px;line-height:1.65;color:var(--muted)}
+  .method .src{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-family:var(--mono);font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);line-height:1.6}
+  .method .src a{color:var(--text-2);border-bottom:1px solid var(--line-2);transition:color .25s,border-color .25s}
+  .method .src a:hover{color:var(--green);border-color:var(--green)}
+  .disclaimer{margin-top:14px;display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(8,13,10,.3);font-size:11px;line-height:1.65;color:var(--muted)}
+  .disclaimer svg{width:14px;height:14px;flex-shrink:0;margin-top:1px;color:var(--gold)}
+  .disclaimer b{color:var(--text-2);font-weight:500}
+
+  /* ---------- footer ---------- */
+  .site-footer{border-top:1px solid var(--line);background:rgba(8,13,10,.6);padding-top:clamp(40px,5vw,64px);overflow:hidden;position:relative}
+  .footer-top{display:grid;grid-template-columns:1.5fr .7fr .7fr .7fr;gap:clamp(24px,4vw,48px);padding-bottom:clamp(30px,4vw,44px)}
+  .footer-brand .brand{margin-bottom:14px}
+  .footer-brand p{font-size:12.5px;line-height:1.7;color:var(--muted);max-width:34ch}
+  .footer-status{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 10px}
+  .footer-status i{width:5px;height:5px;border-radius:50%;background:var(--green)}
+  .footer-col h4{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);font-weight:400;margin-bottom:10px}
+  .footer-col a,.footer-col button{display:block;font-size:12px;color:var(--text-2);padding:3px 0;text-align:left;transition:color .2s,transform .2s}
+  .footer-col a:hover,.footer-col button:hover{color:var(--green);transform:translateX(2px)}
+  .footer-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 18px;padding-block:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:8px;letter-spacing:.05em;color:var(--muted-2)}
+  .footer-bottom .clock{display:inline-flex;align-items:center;gap:6px}
+  .footer-bottom .clock i{width:4px;height:4px;border-radius:50%;background:var(--green);display:inline-block}
+  .footer-word{font-family:var(--serif);font-size:clamp(4.5rem,17vw,14rem);line-height:.72;letter-spacing:-.05em;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(232,240,233,.12);user-select:none;white-space:nowrap;margin-bottom:-.05em}
+  .footer-word span{color:var(--green);-webkit-text-stroke:0}
+
+  /* ---------- toast / to top ---------- */
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:350;display:flex;align-items:center;gap:9px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:999px;padding:10px 16px;font-size:12px;color:var(--text);box-shadow:0 18px 50px -18px rgba(0,0,0,.9);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s,transform .3s var(--ease);max-width:calc(100vw - 32px)}
+  .toast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+  .toast svg{width:14px;height:14px;flex-shrink:0;color:var(--green)}
+  .toast.error svg{color:var(--red)}
+  .to-top{position:fixed;right:clamp(12px,2.4vw,24px);bottom:clamp(12px,2.4vw,24px);z-index:120;width:40px;height:40px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text-2);display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .3s,visibility .3s,transform .3s,background .3s,color .3s}
+  .to-top.show{opacity:1;visibility:visible;transform:none}
+  .to-top:hover{background:var(--green);color:#07100B;border-color:var(--green)}
+  .to-top svg{width:14px;height:14px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1120px){
+    .nav-desktop{display:none}
+    .menu-btn{display:block}
+    .header-actions .status-pill{display:none}
+    .hero{grid-template-columns:1fr;gap:34px;padding-top:108px}
+    .hero-card{max-width:560px}
+    .hero-title{font-size:clamp(3.2rem,9vw,5rem)}
+    .dash-grid,.history-grid,.forecast-grid{grid-template-columns:1fr}
+    .kpi-grid{grid-template-columns:1fr 1fr}
+    .method-grid{grid-template-columns:1fr}
+    .footer-top{grid-template-columns:1.4fr 1fr 1fr}
+    .footer-brand{grid-column:span 3}
+    .section-head{grid-template-columns:1fr;align-items:start}
+  }
+  @media (max-width:760px){
+    .header-inner{height:66px}
+    .brand-mark{width:32px;height:32px}
+    .brand-name{font-size:20px}
+    .brand-sub{font-size:7px}
+    .hero{padding-top:92px}
+    .hero-title{font-size:clamp(2.8rem,12.5vw,4rem)}
+    .hero-lede{font-size:14px}
+    .hero-meta{gap:8px 16px}
+    .hero-card{padding:16px}
+    .hc-cell .val{font-size:1.35rem}
+    .kpi-grid{grid-template-columns:1fr 1fr;gap:9px}
+    .kpi{padding:13px 12px}
+    .kpi-val{font-size:1.4rem}
+    .kpi-foot{font-size:7px}
+    .chart-wrap{height:260px}
+    .chart-pair .val{font-size:16px}
+    .chart-pair .val.par{font-size:12px}
+    .chart-legend .src{margin-left:0;width:100%}
+    .table-head{gap:10px}
+    .premium-control{width:100%;justify-content:space-between}
+    .footer-top{grid-template-columns:1fr 1fr}
+    .footer-brand{grid-column:span 2}
+    .footer-bottom{justify-content:flex-start;gap:6px 14px}
+    .section{padding-block:52px}
+    .sec-title{font-size:clamp(2rem,8vw,2.7rem)}
+    .conv-result .big b{font-size:1.45rem}
+    .method{padding:16px}
+    .footer-word{font-size:clamp(4rem,20vw,7rem)}
+  }
+  @media (max-width:480px){
+    .kpi-grid{grid-template-columns:1fr}
+    .hc-grid{grid-template-columns:1fr 1fr;gap:8px}
+    .hc-cell{padding:10px}
+    .hc-cell .val{font-size:1.25rem}
+    .hero-actions .btn{flex:1}
+    .tick{width:170px}
+    .chart-wrap{height:230px}
+    .footer-top{grid-template-columns:1fr}
+    .footer-brand{grid-column:span 1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Aller au contenu</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+    <a href="#top" class="brand" aria-label="Cours DZD — retour en haut">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18.5" stroke="#5BE0A4" stroke-opacity=".55"/>
+          <path d="M25.5 11.5a9.2 9.2 0 1 0 0 17 10.6 10.6 0 0 1 0-17Z" fill="#5BE0A4" fill-opacity=".9"/>
+          <path d="m27.6 17.2.9 2.1 2.2.2-1.7 1.5.5 2.2-1.9-1.2-2 1.2.6-2.2-1.7-1.5 2.2-.2.9-2.1Z" fill="#FF7557"/>
+        </svg>
+      </span>
+      <span class="brand-txt">
+        <span class="brand-name">Cours<span>DZD</span></span>
+        <span class="brand-sub">Observatoire du dinar</span>
+      </span>
+    </a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="#aujourdhui" class="nav-link">Aujourd'hui</a>
+      <a href="#histoire" class="nav-link">Histoire</a>
+      <a href="#previsions" class="nav-link">Prévisions</a>
+      <a href="#methodologie" class="nav-link">Méthode</a>
+    </nav>
+    <div class="header-actions">
+      <span class="status-pill loading" id="statusPill" title="État de la connexion aux données"><i></i><span id="statusText">Chargement</span></span>
+      <button class="icon-btn" id="refreshBtn" aria-label="Actualiser les taux" title="Actualiser les taux">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav aria-label="Navigation mobile">
+    <a href="#aujourdhui" style="transition-delay:.05s"><span class="num">01</span> Aujourd'hui</a>
+    <a href="#histoire" style="transition-delay:.1s"><span class="num">02</span> Histoire</a>
+    <a href="#previsions" style="transition-delay:.15s"><span class="num">03</span> Prévisions</a>
+    <a href="#methodologie" style="transition-delay:.2s"><span class="num">04</span> Méthode</a>
+  </nav>
+  <div class="mobile-menu-foot">
+    <span class="status-pill" id="statusPillMobile"><i></i><span>Chargement</span></span>
+    <span class="mono">Alger · <span data-algiers-time>--:--:--</span></span>
+  </div>
+</div>
+
+<main id="main">
+  <noscript><div class="noscript-banner">Activez JavaScript pour afficher les taux en direct, les graphiques interactifs et les prévisions.</div></noscript>
+  <span id="top"></span>
+
+  <!-- HERO -->
+  <section class="hero shell" aria-labelledby="heroTitle">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">
+        <span class="flag-dot" aria-hidden="true"><i>★</i></span>
+        <span>Observatoire du dinar algérien — Édition 2026</span>
+      </div>
+      <h1 class="hero-title reveal" id="heroTitle" style="--d:.06s">Le dinar,<br><em>sans détour.</em></h1>
+      <p class="hero-lede reveal" style="--d:.12s">Taux officiel de la Banque d'Algérie et estimation du marché parallèle, pour les principales devises. Dix ans d'historique, l'écart persistant et des scénarios à horizon 2030.</p>
+      <div class="hero-actions reveal" style="--d:.18s">
+        <a href="#aujourdhui" class="btn btn-primary">Explorer les taux
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="#previsions" class="btn btn-ghost">Voir les prévisions
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta reveal" style="--d:.24s">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> Banque d'Algérie</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> 7 devises suivies</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg> 2015 → 2030</span>
+      </div>
+    </div>
+
+    <aside class="hero-card reveal" style="--d:.14s" aria-label="Carte du jour EUR/DZD">
+      <div class="hc-head">
+        <div class="hc-pair">
+          <span class="hc-flag" aria-hidden="true">€</span>
+          <div><b>EUR / DZD</b><span>Euro → Dinar algérien</span></div>
+        </div>
+        <span class="live-badge" id="heroBadge"><i></i> <span id="heroStatus">En direct</span></span>
+      </div>
+      <div class="hc-grid">
+        <div class="hc-cell">
+          <div class="lbl"><i></i> Officiel</div>
+          <div class="val" id="heroOfficial">—</div>
+          <div class="sub"><span>DZD pour 1 €</span><b id="heroDelta" class="up">—</b></div>
+        </div>
+        <div class="hc-cell par">
+          <div class="lbl"><i></i> Parallèle · est.</div>
+          <div class="val" id="heroParallel" style="color:var(--red)">—</div>
+          <div class="sub"><span>DZD pour 1 €</span><b style="color:var(--gold)" id="heroPremium">—</b></div>
+        </div>
+      </div>
+      <div class="hc-spark" id="heroSpark" aria-hidden="true"></div>
+      <div class="hc-foot">
+        <span id="heroDate">Cours du —</span>
+        <span>Mise à jour <b id="heroUpdated">—</b></span>
+      </div>
+      <p class="hc-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        Le taux parallèle est une estimation indicative, ajustable plus bas. Il ne s'agit pas d'un cours garanti.
+      </p>
+    </aside>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap" aria-label="Taux des principales devises">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <!-- AUJOURD'HUI -->
+  <section class="section shell" id="aujourdhui" aria-labelledby="todayTitle">
+    <div class="section-head">
+      <div>
+        <div class="sec-label reveal"><span class="n">01</span><span class="rule"></span><span>Aujourd'hui</span></div>
+        <h2 class="sec-title reveal" id="todayTitle" style="--d:.05s">Les taux, <em>en un regard.</em></h2>
+      </div>
+      <p class="sec-intro reveal" style="--d:.1s">Cours officiels publiés par la Banque d'Algérie et <b>estimation du marché parallèle</b> (le « square »). Les séries sont actualisées automatiquement et l'écart peut être ajusté selon votre marché local.</p>
+    </div>
+
+    <div class="kpi-grid">
+      <article class="card kpi reveal">
+        <div class="kpi-top"><span class="kpi-label"><i></i> EUR / DZD officiel</span><span class="badge green">Officiel</span></div>
+        <div class="kpi-val"><span id="kpiOfficial">—</span><small>DZD</small></div>
+        <span class="kpi-delta" id="kpiOfficialDelta">—</span>
+        <div class="kpi-spark" id="kpiOfficialSpark" aria-hidden="true"></div>
+        <div class="kpi-foot" id="kpiOfficialFoot">Cours de référence · 1 €</div>
+      </article>
+      <article class="card kpi reveal" style="--d:.05s">
+        <div class="kpi-top"><span class="kpi-label red"><i></i> EUR / DZD parallèle</span><span class="badge est">Estimation</span></div>
+        <div class="kpi-val"><span id="kpiParallel" style="color:var(--red)">—</span><small>DZD</small></div>
+        <span class="kpi-delta" id="kpiParallelDelta">—</span>
+        <div class="kpi-spark" id="kpiParallelSpark" aria-hidden="true"></div>
+        <div class="kpi-foot" id="kpiParallelFoot">Marché informel · 1 €</div>
+      </article>
+      <article class="card kpi reveal" style="--d:.1s">
+        <div class="kpi-top"><span class="kpi-label gold"><i></i> Prime parallèle</span><span class="badge">Écart</span></div>
+        <div class="kpi-val"><span id="kpiPremium" style="color:var(--gold)">—</span></div>
+        <div class="gauge" aria-hidden="true"><span class="g1" id="kpiGaugeGreen" style="width:55%"></span><span class="g2" id="kpiGaugeRed" style="width:45%"></span></div>
+        <div class="gauge-legend"><span>Officiel</span><span>Prime</span></div>
+        <div class="kpi-foot" id="kpiPremiumFoot">Sur le taux EUR / DZD</div>
+      </article>
+      <article class="card kpi reveal" style="--d:.15s">
+        <div class="kpi-top"><span class="kpi-label"><i style="background:var(--red)"></i> Dinar vs EUR · 10 ans</span><span class="badge red">Dépréciation</span></div>
+        <div class="kpi-val"><span id="kpiDep" style="color:var(--red)">—</span></div>
+        <div class="gauge" aria-hidden="true"><span class="g1" id="kpiDepGreen" style="width:50%"></span><span class="g2" id="kpiDepRed" style="width:50%"></span></div>
+        <div class="gauge-legend"><span>Valeur restante</span><span>Perte</span></div>
+        <div class="kpi-foot" id="kpiDepFoot">Depuis janvier 2015</div>
+      </article>
+    </div>
+
+    <div class="dash-grid">
+      <article class="card card-pad chart-card reveal">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Évolution du taux</h3>
+            <p class="card-sub" id="chartSub">DZD par unité de devise · mensuel</p>
+          </div>
+          <span class="badge green" id="chartSourceBadge"><i style="width:4px;height:4px;border-radius:50%;background:var(--green);display:inline-block"></i> API officielle</span>
+        </div>
+        <div class="tabs" id="currencyTabs" role="group" aria-label="Choisir une devise"></div>
+        <div class="chart-toolbar">
+          <div class="chart-pair">
+            <b id="chartPair">EUR / DZD</b>
+            <span class="val" id="chartOfficial">—</span>
+            <span class="sep">officiel</span>
+            <span class="val par" id="chartParallel">—</span>
+            <span class="sep">parallèle</span>
+            <span class="chg" id="chartDelta">—</span>
+          </div>
+          <div class="seg" id="chartModeBtns" role="group" aria-label="Mode du graphique">
+            <button type="button" class="active" data-mode="rates">Taux</button>
+            <button type="button" data-mode="premium">Prime</button>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="mainChart" role="img" aria-label="Graphique de l'évolution du taux de change"></canvas>
+          <div class="chart-fallback" id="mainChartFallback">Le graphique interactif nécessite Chart.js.<br>Les taux restent disponibles dans le tableau ci-dessous.</div>
+        </div>
+        <div class="chart-toolbar" style="margin-top:0;padding-top:10px">
+          <div class="seg" id="rangeBtns" role="group" aria-label="Période du graphique">
+            <button type="button" data-range="6">6M</button>
+            <button type="button" data-range="12">1A</button>
+            <button type="button" data-range="36">3A</button>
+            <button type="button" data-range="60" class="active">5A</button>
+            <button type="button" data-range="120">10A</button>
+          </div>
+          <span class="mono" style="font-size:8px;color:var(--muted-2)">H = DZD par devise</span>
+        </div>
+        <div class="chart-legend">
+          <span><i></i> Taux officiel</span>
+          <span><i class="par"></i> Marché parallèle (estimation)</span>
+          <span class="src" id="chartLegendSource">Source : Banque d'Algérie</span>
+        </div>
+      </article>
+
+      <article class="card card-pad converter reveal" style="--d:.06s">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Convertisseur</h3>
+            <p class="card-sub">Calcul instantané</p>
+          </div>
+          <span class="badge" id="convMarketBadge">Officiel</span>
+        </div>
+        <div class="conv-market" id="convMarketBtns" role="group" aria-label="Marché de conversion">
+          <button type="button" class="active" data-market="official">Officiel</button>
+          <button type="button" data-market="parallel">Parallèle</button>
+        </div>
+        <div class="conv-field">
+          <div class="conv-label"><span>Montant</span><span id="convFromLabel">DZD</span></div>
+          <div class="conv-input-row">
+            <input type="number" id="convAmount" value="100" min="0" step="any" inputmode="decimal" aria-label="Montant à convertir">
+            <select class="cur-select" id="convFrom" aria-label="Devise d'origine"></select>
+          </div>
+        </div>
+        <div class="conv-swap">
+          <button type="button" id="convSwap" aria-label="Inverser les devises">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M7 20l-3-3M7 20l3-3M17 20V4M17 4l-3 3M17 4l3 3"/></svg>
+          </button>
+        </div>
+        <div class="conv-field" style="margin-top:0">
+          <div class="conv-label"><span>Devise cible</span><span id="convToLabel">EUR</span></div>
+          <div class="conv-input-row">
+            <div class="conv-result" style="margin:0;border:0;background:transparent;padding:0;flex:1">
+              <div class="big"><b id="convResult">—</b><span id="convResultCode">EUR</span></div>
+            </div>
+            <select class="cur-select" id="convTo" aria-label="Devise cible"></select>
+          </div>
+        </div>
+        <div class="conv-rate"><span id="convRate">—</span><b id="convInverse">—</b></div>
+        <div class="conv-alt" id="convAlt">—</div>
+        <p class="conv-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+          Taux indicatifs. Le marché parallèle est une estimation : ajustez la prime dans le tableau ci-dessous.
+        </p>
+      </article>
+    </div>
+
+    <article class="card card-pad table-card reveal">
+      <div class="table-head">
+        <div>
+          <h3 class="card-title">Tous les taux du jour</h3>
+          <p class="card-sub" id="tableSub">Cours officiels et estimation parallèle · DZD pour 1 unité</p>
+        </div>
+        <div class="premium-control">
+          <label for="premiumSlider">Prime parallèle</label>
+          <input type="range" class="slider" id="premiumSlider" min="0.5" max="1.5" step="0.01" value="1" aria-label="Ajuster la prime du marché parallèle">
+          <output id="premiumValue" for="premiumSlider">×1,00</output>
+          <button type="button" class="reset-link" id="premiumReset">Réinitialiser</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="rates">
+          <caption>Tableau des taux — données officielles et estimation parallèle</caption>
+          <thead>
+            <tr>
+              <th scope="col" aria-sort="ascending"><button type="button" data-sort="code">Devise <span class="ind">↕</span></button></th>
+              <th scope="col" aria-sort="none"><button type="button" data-sort="official">Officiel <span class="ind">↕</span></button></th>
+              <th scope="col" aria-sort="none"><button type="button" data-sort="parallel">Parallèle <span class="ind">↕</span></button></th>
+              <th scope="col" aria-sort="none"><button type="button" data-sort="premium">Prime <span class="ind">↕</span></button></th>
+              <th scope="col" aria-sort="none"><button type="button" data-sort="delta">Tendance 30j <span class="ind">↕</span></button></th>
+              <th scope="col"><span class="sr-only">Action</span></th>
+            </tr>
+          </thead>
+          <tbody id="rateTableBody"></tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        Une hausse du taux signifie une dépréciation du dinar. Le taux parallèle est une <b style="color:var(--gold);font-weight:500">estimation</b> : il n'est ni garanti ni officiel.
+      </p>
+    </article>
+  </section>
+
+  <!-- HISTOIRE -->
+  <section class="section shell" id="histoire" aria-labelledby="historyTitle" style="padding-top:0">
+    <div class="section-head">
+      <div>
+        <div class="sec-label reveal"><span class="n">02</span><span class="rule"></span><span>Histoire</span></div>
+        <h2 class="sec-title reveal" id="historyTitle" style="--d:.05s">Dix ans de <em>glissement.</em></h2>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <p class="sec-intro">Le dinar a cédé du terrain face aux principales devises, avec des accélérations marquées. Comparez l'évolution annuelle officielle et l'estimation parallèle.</p>
+        <div class="select-wrap" style="margin-top:14px">
+          <select id="historyCurrency" aria-label="Devise de l'historique"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="history-grid">
+      <article class="card card-pad reveal">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Moyenne annuelle du dinar</h3>
+            <p class="card-sub" id="historySub">DZD pour 1 EUR · 2015 — 2026</p>
+          </div>
+          <span class="badge">10 ans</span>
+        </div>
+        <div class="chart-wrap" style="height:300px">
+          <canvas id="historyChart" role="img" aria-label="Graphique annuel du taux officiel et parallèle"></canvas>
+          <div class="chart-fallback" id="historyChartFallback">Graphique indisponible.</div>
+        </div>
+        <div class="chart-legend">
+          <span><i></i> Officiel (moyenne)</span>
+          <span><i class="par"></i> Parallèle (estimation)</span>
+          <span><i class="gold"></i> Prime parallèle</span>
+          <span class="src" id="historyLegendSource">Source : Banque d'Algérie</span>
+        </div>
+      </article>
+
+      <aside class="card card-pad reveal" style="--d:.06s">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Ce qu'il faut retenir</h3>
+            <p class="card-sub" id="insightsSub">EUR / DZD</p>
+          </div>
+          <span class="badge red">Diagnostic</span>
+        </div>
+        <div class="insight-list">
+          <div class="insight"><span class="il">Dépréciation officielle<br>depuis 2015</span><span class="iv red" id="insDep">—</span></div>
+          <div class="insight"><span class="il">Dépréciation parallèle<br>(estimation)</span><span class="iv red" id="insParDep">—</span></div>
+          <div class="insight"><span class="il">Prime parallèle<br>moyenne</span><span class="iv gold" id="insPremium">—</span></div>
+          <div class="insight"><span class="il">Plus haut annuel<br>officiel</span><span class="iv" id="insPeak">—</span></div>
+        </div>
+        <p class="insight-note" id="insSentence">—</p>
+      </aside>
+    </div>
+
+    <div class="year-table-wrap reveal">
+      <table class="years">
+        <caption>Évaluation annuelle — moyenne des cours mensuels</caption>
+        <thead>
+          <tr>
+            <th scope="col">Année</th>
+            <th scope="col">Officiel (DZD)</th>
+            <th scope="col">Parallèle (DZD)</th>
+            <th scope="col">Variation</th>
+            <th scope="col">Prime</th>
+          </tr>
+        </thead>
+        <tbody id="yearTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PREVISIONS -->
+  <section class="section shell" id="previsions" aria-labelledby="forecastTitle" style="padding-top:0">
+    <div class="section-head">
+      <div>
+        <div class="sec-label reveal"><span class="n">03</span><span class="rule"></span><span>Prévisions</span></div>
+        <h2 class="sec-title reveal" id="forecastTitle" style="--d:.05s">Et <em>demain&nbsp;?</em></h2>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <p class="sec-intro">Trois scénarios statistiques à horizon 2030, construits sur les tendances de long terme. Ce ne sont pas des certitudes — plutôt des repères pour anticiper.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+          <div class="select-wrap"><select id="forecastCurrency" aria-label="Devise des prévisions"></select></div>
+          <div class="seg" id="forecastMarketBtns" role="group" aria-label="Marché des prévisions">
+            <button type="button" class="active" data-market="official">Officiel</button>
+            <button type="button" data-market="parallel">Parallèle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="forecast-grid">
+      <article class="card card-pad reveal">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Projection 2027 — 2030</h3>
+            <p class="card-sub" id="forecastSub">Scénarios de tendance · EUR / DZD officiel</p>
+          </div>
+          <span class="badge est">Modèle</span>
+        </div>
+        <div class="chart-wrap" style="height:310px">
+          <canvas id="forecastChart" role="img" aria-label="Graphique des prévisions 2027 à 2030"></canvas>
+          <div class="chart-fallback" id="forecastChartFallback">Graphique indisponible.</div>
+        </div>
+        <div class="chart-legend">
+          <span><i></i> Historique</span>
+          <span><i class="gold"></i> Scénario central</span>
+          <span><i style="background:var(--red);opacity:.6"></i> Pessimiste</span>
+          <span><i style="background:var(--green);opacity:.6"></i> Optimiste</span>
+          <span class="src" id="forecastLegendSource">CAGR 10 ans / 5 ans</span>
+        </div>
+      </article>
+
+      <aside class="card card-pad reveal" style="--d:.06s">
+        <div class="card-head">
+          <div>
+            <h3 class="card-title">Trois trajectoires</h3>
+            <p class="card-sub">Valeur estimée en 2030</p>
+          </div>
+          <span class="badge">2030</span>
+        </div>
+        <div class="scenario-list" id="scenarioCards"></div>
+        <p class="forecast-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg>
+          <span>Projection mathématique, pas une prédiction. Les taux parallèles reposent sur une estimation. Aucune décision financière ne devrait reposer uniquement sur ces chiffres.</span>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- METHODE -->
+  <section class="section shell" id="methodologie" aria-labelledby="methodTitle" style="padding-top:0">
+    <div class="section-head">
+      <div>
+        <div class="sec-label reveal"><span class="n">04</span><span class="rule"></span><span>Méthode</span></div>
+        <h2 class="sec-title reveal" id="methodTitle" style="--d:.05s">D'où viennent <em>les chiffres.</em></h2>
+      </div>
+      <p class="sec-intro reveal" style="--d:.1s">Un observatoire indépendant, transparent sur ses sources et ses limites. Les données officielles sont récupérées par API ; les estimations sont signalées comme telles.</p>
+    </div>
+
+    <div class="method-grid">
+      <article class="card method reveal">
+        <div class="method-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6M8 10h.01M12 10h.01M16 10h.01"/></svg>
+        </div>
+        <h3>Taux officiel</h3>
+        <p>Les cours de référence de la Banque d'Algérie, récupérés via l'API Frankfurter qui agrège les sources officielles. Actualisation quotidienne, série mensuelle depuis 2015.</p>
+        <div class="src">Source : <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a> · Banque d'Algérie<br><span id="methodDate">—</span></div>
+      </article>
+      <article class="card method reveal" style="--d:.06s">
+        <div class="method-icon" aria-hidden="true" style="color:var(--red)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4M9 10h.01M15 10h.01M9 13h.01M15 13h.01"/></svg>
+        </div>
+        <h3>Marché parallèle</h3>
+        <p>Le « square » n'a pas de cotation officielle. Les valeurs affichées sont une <b style="color:var(--gold);font-weight:500">estimation</b> calibrée sur les primes observées, ajustable via le curseur. À titre indicatif uniquement.</p>
+        <div class="src">Estimation · prime ajustable<br><span id="methodStatus">—</span></div>
+      </article>
+      <article class="card method reveal" style="--d:.12s">
+        <div class="method-icon" aria-hidden="true" style="color:var(--gold)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/><path d="M19 8V4h-4"/></svg>
+        </div>
+        <h3>Prévisions</h3>
+        <p>Un modèle de tendance : croissance annuelle moyenne sur 10 ans et 5 ans, puis trois scénarios (central, pessimiste, optimiste). Horizon 2030, à lire comme un intervalle de plausibilité.</p>
+        <div class="src">Modèle statistique · 2027 — 2030<br>Scénarios, pas certitudes</div>
+      </article>
+    </div>
+
+    <div class="disclaimer reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <span><b>Transparence :</b> les taux officiels proviennent de l'API Frankfurter (données de la Banque d'Algérie). Les taux parallèles sont des estimations indicatives, non officielles. Les prévisions sont des scénarios mathématiques et ne constituent pas un conseil financier. Vérifiez toujours les cours auprès de votre banque ou d'un changeur agréé avant toute opération.</span>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand" aria-label="Cours DZD — retour en haut">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="18.5" stroke="#5BE0A4" stroke-opacity=".55"/>
+              <path d="M25.5 11.5a9.2 9.2 0 1 0 0 17 10.6 10.6 0 0 1 0-17Z" fill="#5BE0A4" fill-opacity=".9"/>
+              <path d="m27.6 17.2.9 2.1 2.2.2-1.7 1.5.5 2.2-1.9-1.2-2 1.2.6-2.2-1.7-1.5 2.2-.2.9-2.1Z" fill="#FF7557"/>
+            </svg>
+          </span>
+          <span class="brand-txt"><span class="brand-name">Cours<span>DZD</span></span><span class="brand-sub">Observatoire du dinar</span></span>
+        </a>
+        <p>Un observatoire indépendant du dinar algérien : taux officiel, estimation du marché parallèle, historique et scénarios. Pour comprendre, pas pour spéculer.</p>
+        <span class="footer-status" id="footerStatus"><i></i> Connexion aux données…</span>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#aujourdhui">Aujourd'hui</a>
+        <a href="#histoire">Histoire</a>
+        <a href="#previsions">Prévisions</a>
+        <a href="#methodologie">Méthode</a>
+      </div>
+      <div class="footer-col">
+        <h4>Devises</h4>
+        <button type="button" data-footer-currency="EUR">Euro (EUR)</button>
+        <button type="button" data-footer-currency="USD">Dollar (USD)</button>
+        <button type="button" data-footer-currency="GBP">Livre (GBP)</button>
+        <button type="button" data-footer-currency="CAD">Canadien (CAD)</button>
+      </div>
+      <div class="footer-col">
+        <h4>Sources</h4>
+        <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter ↗</a>
+        <a href="https://www.banque-algerie.dz" target="_blank" rel="noopener">Banque d'Algérie ↗</a>
+        <a href="#methodologie">Méthodologie</a>
+        <a href="#top">Retour en haut ↑</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cours DZD — Observatoire indépendant</span>
+      <span class="clock"><i></i> Alger, <span data-algiers-time>--:--:--</span></span>
+      <span id="footerDate">—</span>
+      <span>Données officielles : Banque d'Algérie · Estimations parallèles indicatives</span>
+    </div>
+  </div>
+  <div class="footer-word" aria-hidden="true">DZD<span>.</span></div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+  <span id="toastText">Taux actualisés</span>
+</div>
+<button class="to-top" id="toTop" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script>
+(function(){
+  'use strict';
+  /* ============================================================
+     Cours DZD — observatoire du dinar algérien
+     Données officielles : API Frankfurter (Banque d'Algérie)
+     Données parallèles : estimation calibrée, ajustable
+     ============================================================ */
+
+  const $  = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const API = 'https://api.frankfurter.dev/v2';
+
+  const CURRENCIES = [
+    { code:'EUR', name:'Euro',              symbol:'€',  parallelNow:276, anchor2015:104 },
+    { code:'USD', name:'Dollar américain',  symbol:'$',  parallelNow:237, anchor2015:96  },
+    { code:'GBP', name:'Livre sterling',    symbol:'£',  parallelNow:320, anchor2015:150 },
+    { code:'CAD', name:'Dollar canadien',   symbol:'C$', parallelNow:175, anchor2015:80  },
+    { code:'CHF', name:'Franc suisse',      symbol:'CHF',parallelNow:295, anchor2015:110 },
+    { code:'TRY', name:'Livre turque',      symbol:'₺',  parallelNow:4.0, anchor2015:40  },
+    { code:'AED', name:'Dirham émirati',    symbol:'AED',parallelNow:65,  anchor2015:27  }
+  ];
+
+  const state = {
+    selected:'EUR',
+    range:60,
+    chartMode:'rates',
+    historyCurrency:'EUR',
+    forecastCurrency:'EUR',
+    forecastMarket:'official',
+    forecastFocus:'central',
+    premiumAdjust:1,
+    market:'official',
+    from:'DZD',
+    to:'EUR',
+    sort:{ key:'code', dir:1 },
+    data:{},
+    live:false,
+    loading:true,
+    sourceDate:null,
+    lastUpdated:null
+  };
+
+  /* ---------- utils ---------- */
+  const nf = (n, max=2) => {
+    if (n === null || n === undefined || Number.isNaN(n)) return '—';
+    return new Intl.NumberFormat('fr-FR', { minimumFractionDigits:0, maximumFractionDigits:max }).format(n);
+  };
+  const smart = n => nf(n, Math.abs(n) < 10 ? 4 : 2);
+  const pct = (n, max=1) => (n > 0 ? '+' : '') + nf(n, max) + ' %';
+  const avg = arr => arr.length ? arr.reduce((a,b)=>a+b,0) / arr.length : 0;
+  const clamp = (v,a,b) => Math.min(b, Math.max(a,v));
+  const fmtDate = d => d ? new Intl.DateTimeFormat('fr-FR', { day:'numeric', month:'short', year:'numeric' }).format(d) : '—';
+  const fmtMonth = d => new Intl.DateTimeFormat('fr-FR', { month:'short', year:'2-digit' }).format(d);
+  const fmtTime = d => d ? new Intl.DateTimeFormat('fr-FR', { hour:'2-digit', minute:'2-digit' }).format(d) : '—';
+  const parseDate = s => { const d = new Date(s + 'T12:00:00'); return isNaN(d) ? null : d; };
+  const lastOf = arr => arr[arr.length-1];
+  const monthKey = d => d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ---------- fallback series (2015 → aujourd'hui) ---------- */
+  function fallbackSeries(anchorStart, anchorEnd, seed){
+    const rand = mulberry32(seed);
+    const start = new Date(2015, 0, 1);
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth(), 1);
+    const n = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
+    const out = [];
+    for (let i=0; i<n; i++){
+      const t = i / (n - 1);
+      const base = anchorStart + (anchorEnd - anchorStart) * Math.pow(t, 1.12);
+      const noise = (rand() - 0.5) * 0.022 * base;
+      const wobble = Math.sin(i / 7 + seed) * 0.006 * base;
+      out.push({ date:new Date(start.getFullYear(), start.getMonth() + i, 1), value:Math.max(0.0001, base + noise + wobble) });
+    }
+    out[out.length - 1].value = anchorEnd;
+    return out;
+  }
+
+  function buildFallback(){
+    CURRENCIES.forEach((c, idx) => {
+      const official = fallbackSeries(c.anchor2015, c.parallelNow / (1 + 0.75), 11 + idx * 7);
+      // on force la dernière valeur officielle sur un ancrage cohérent
+      const officialEnd = { EUR:152.4, USD:136.3, GBP:182.6, CAD:96.8, CHF:166.4, TRY:2.72, AED:37.1 }[c.code];
+      official[official.length - 1].value = officialEnd;
+      state.data[c.code] = { official, parallel:[], basePremium:0 };
+    });
+    recalcParallel();
+  }
+
+  function recalcParallel(){
+    CURRENCIES.forEach(c => {
+      const d = state.data[c.code];
+      if (!d || !d.official.length) return;
+      const last = lastOf(d.official).value;
+      const basePremium = Math.max(0.01, c.parallelNow / last - 1);
+      d.basePremium = basePremium;
+      const n = d.official.length;
+      d.parallel = d.official.map((p, i) => {
+        const t = n > 1 ? i / (n - 1) : 1;
+        const curve = 0.2 + 0.8 * Math.pow(t, 1.3);
+        return { date:p.date, value:p.value * (1 + basePremium * curve * state.premiumAdjust) };
+      });
+    });
+  }
+
+  function ratesFor(market){
+    const r = {};
+    CURRENCIES.forEach(c => {
+      const d = state.data[c.code];
+      if (!d) return;
+      r[c.code] = market === 'official' ? lastOf(d.official).value : lastOf(d.parallel).value;
+    });
+    return r;
+  }
+
+  /* ---------- sparklines ---------- */
+  function sparkline(values, color, fill=true){
+    if (!values || values.length < 2) return '';
+    const w = 120, h = 32, pad = 2;
+    const min = Math.min(...values), max = Math.max(...values);
+    const span = max - min || 1;
+    const pts = values.map((v,i) => {
+      const x = pad + (i / (values.length - 1)) * (w - pad*2);
+      const y = h - pad - ((v - min) / span) * (h - pad*2);
+      return [x, y];
+    });
+    const line = pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    const id = 'sg' + Math.random().toString(36).slice(2, 8);
+    const area = `M${pts[0][0]},${h} L` + line.replace(/ /g, ' L') + ` L${pts[pts.length-1][0]},${h} Z`;
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity=".28"/><stop offset="1" stop-color="${color}" stop-opacity="0"/></linearGradient></defs>
+      ${fill ? `<path d="${area}" fill="url(#${id})"/>` : ''}
+      <polyline points="${line}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle cx="${pts[pts.length-1][0]}" cy="${pts[pts.length-1][1]}" r="1.8" fill="${color}"/>
+    </svg>`;
+  }
+
+  function dualSparkline(official, parallel){
+    if (!official || official.length < 2) return '';
+    const w = 300, h = 64, pad = 3;
+    const all = official.concat(parallel);
+    const min = Math.min(...all), max = Math.max(...all);
+    const span = max - min || 1;
+    const toPts = vals => vals.map((v,i) => {
+      const x = pad + (i / (vals.length - 1)) * (w - pad*2);
+      const y = h - pad - ((v - min) / span) * (h - pad*2);
+      return [x, y];
+    });
+    const a = toPts(official), b = toPts(parallel);
+    const line = pts => pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    const area = `M${a[0][0]},${h} L` + line(a).replace(/ /g, ' L') + ` L${a[a.length-1][0]},${h} Z`;
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5BE0A4" stop-opacity=".22"/><stop offset="1" stop-color="#5BE0A4" stop-opacity="0"/></linearGradient>
+        <linearGradient id="hp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7557" stop-opacity=".12"/><stop offset="1" stop-color="#FF7557" stop-opacity="0"/></linearGradient>
+      </defs>
+      <path d="${area}" fill="url(#hg)"/>
+      <polyline points="${line(b)}" fill="none" stroke="#FF7557" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke" opacity=".85"/>
+      <polyline points="${line(a)}" fill="none" stroke="#5BE0A4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle cx="${a[a.length-1][0]}" cy="${a[a.length-1][1]}" r="2.2" fill="#5BE0A4"/>
+      <circle cx="${b[b.length-1][0]}" cy="${b[b.length-1][1]}" r="2" fill="#FF7557"/>
+    </svg>`;
+  }
+
+  /* ---------- chart defaults ---------- */
+  const hasChart = typeof window.Chart !== 'undefined';
+  if (hasChart){
+    Chart.defaults.font.family = "'Inter Tight', sans-serif";
+    Chart.defaults.font.size = 10;
+    Chart.defaults.color = '#84948A';
+  }
+  const tooltipStyle = {
+    backgroundColor:'rgba(11,18,14,.96)',
+    borderColor:'rgba(232,240,233,.16)',
+    borderWidth:1,
+    titleColor:'#EDF2EC',
+    bodyColor:'#B9C5BC',
+    titleFont:{ family:"'JetBrains Mono', monospace", size:9, weight:'500' },
+    bodyFont:{ family:"'JetBrains Mono', monospace", size:10 },
+    padding:11,
+    cornerRadius:9,
+    boxWidth:7,
+    boxHeight:7,
+    boxPadding:4,
+    usePointStyle:true,
+    displayColors:true
+  };
+  const gridStyle = { color:'rgba(232,240,233,.055)', drawTicks:false };
+  const tickStyle = { color:'#66756B', font:{ family:"'JetBrains Mono', monospace", size:9 }, padding:7, maxRotation:0 };
+  const noBorder = { display:false };
+
+  let mainChart, historyChart, forecastChart;
+
+  function initCharts(){
+    if (!hasChart){
+      ['mainChartFallback','historyChartFallback','forecastChartFallback'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'flex'; });
+      return;
+    }
+    const mainCtx = document.getElementById('mainChart');
+    if (mainCtx){
+      mainChart = new Chart(mainCtx, {
+        type:'line',
+        data:{ labels:[], datasets:[] },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          interaction:{ mode:'index', intersect:false },
+          animation:{ duration:reduceMotion ? 0 : 650, easing:'easeOutQuart' },
+          plugins:{ legend:{ display:false }, tooltip:tooltipStyle },
+          scales:{
+            x:{ grid:{ display:false }, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:7, autoSkip:true } },
+            y:{ position:'right', grid:gridStyle, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:6, callback:v => nf(v, Math.abs(v) < 10 ? 3 : 1) } }
+          }
+        }
+      });
+    }
+    const histCtx = document.getElementById('historyChart');
+    if (histCtx){
+      historyChart = new Chart(histCtx, {
+        type:'bar',
+        data:{ labels:[], datasets:[] },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          interaction:{ mode:'index', intersect:false },
+          animation:{ duration:reduceMotion ? 0 : 650, easing:'easeOutQuart' },
+          plugins:{ legend:{ display:false }, tooltip:tooltipStyle },
+          scales:{
+            x:{ grid:{ display:false }, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:12 } },
+            y:{ position:'right', grid:gridStyle, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:6, callback:v => nf(v, 0) } },
+            y1:{ position:'left', grid:{ display:false }, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:5, callback:v => nf(v, 0) + ' %' } }
+          }
+        }
+      });
+    }
+    const fcCtx = document.getElementById('forecastChart');
+    if (fcCtx){
+      forecastChart = new Chart(fcCtx, {
+        type:'line',
+        data:{ labels:[], datasets:[] },
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          interaction:{ mode:'index', intersect:false },
+          animation:{ duration:reduceMotion ? 0 : 700, easing:'easeOutQuart' },
+          plugins:{ legend:{ display:false }, tooltip:tooltipStyle },
+          scales:{
+            x:{ grid:{ display:false }, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:9 } },
+            y:{ position:'right', grid:gridStyle, border:noBorder, ticks:{ ...tickStyle, maxTicksLimit:6, callback:v => nf(v, Math.abs(v) < 10 ? 3 : 1) } }
+          }
+        }
+      });
+    }
+  }
+
+  /* ---------- render: status ---------- */
+  function renderStatus(){
+    const pill = $('#statusPill');
+    const txt = $('#statusText');
+    const mobile = $('#statusPillMobile');
+    const heroStatus = $('#heroStatus');
+    const footer = $('#footerStatus');
+    let cls = 'status-pill', label = 'Mode démo';
+    if (state.loading){ cls += ' loading'; label = 'Chargement'; }
+    else if (state.live){ cls += ' live'; label = 'En direct'; }
+    else { cls += ' demo'; label = 'Mode démo'; }
+    if (pill){ pill.className = cls; }
+    if (txt) txt.textContent = label;
+    if (mobile){ mobile.className = cls; const s = mobile.querySelector('span'); if (s) s.textContent = label; }
+    if (heroStatus) heroStatus.textContent = state.loading ? 'Connexion…' : (state.live ? 'En direct' : 'Mode démo');
+    const heroBadge = $('#heroBadge');
+    if (heroBadge) heroBadge.className = 'live-badge' + (state.live ? '' : ' demo');
+    if (footer){
+      footer.innerHTML = `<i style="background:${state.live ? 'var(--green)' : (state.loading ? 'var(--gold)' : 'var(--red)')};width:5px;height:5px;border-radius:50%;display:inline-block"></i> ${state.live ? 'Données officielles connectées' : (state.loading ? 'Connexion aux données…' : 'Mode démo — données de secours')}`;
+    }
+    const src = state.sourceDate ? fmtDate(state.sourceDate) : '—';
+    const upd = state.lastUpdated ? fmtTime(state.lastUpdated) : '—';
+    const heroDate = $('#heroDate'); if (heroDate) heroDate.textContent = 'Cours du ' + src;
+    const heroUpd = $('#heroUpdated'); if (heroUpd) heroUpd.textContent = upd;
+    const methodDate = $('#methodDate'); if (methodDate) methodDate.textContent = 'Série au ' + src;
+    const methodStatus = $('#methodStatus'); if (methodStatus) methodStatus.textContent = state.live ? 'Estimation connectée' : 'Estimation de secours';
+    const footerDate = $('#footerDate'); if (footerDate) footerDate.textContent = 'Cours du ' + src + ' · actualisé à ' + upd;
+  }
+
+  /* ---------- render: ticker ---------- */
+  function renderTicker(){
+    const el = $('#ticker');
+    if (!el) return;
+    el.innerHTML = CURRENCIES.map(c => {
+      const d = state.data[c.code];
+      if (!d) return '';
+      const last = lastOf(d.official), par = lastOf(d.parallel), prev = d.official[d.official.length-2] || last;
+      const delta = (last.value / prev.value - 1) * 100;
+      return `<button type="button" class="tick ${state.selected === c.code ? 'active' : ''}" data-code="${c.code}" aria-label="Sélectionner ${c.code}">
+        <span class="tick-label"><span class="tick-code"><b>${c.symbol}</b> ${c.code}</span><span class="tick-delta ${delta >= 0 ? 'up' : 'down'}">${pct(delta)}</span></span>
+        <span class="tick-vals"><b>${smart(last.value)}</b><span>${smart(par.value)}</span></span>
+      </button>`;
+    }).join('');
+    $$('.tick', el).forEach(btn => btn.addEventListener('click', () => selectCurrency(btn.dataset.code)));
+  }
+
+  /* ---------- render: hero ---------- */
+  function renderHero(){
+    const d = state.data.EUR;
+    if (!d) return;
+    const last = lastOf(d.official), par = lastOf(d.parallel);
+    const prev = d.official[d.official.length-2] || last;
+    const delta = (last.value / prev.value - 1) * 100;
+    const premium = (par.value / last.value - 1) * 100;
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('heroOfficial', smart(last.value));
+    set('heroParallel', smart(par.value));
+    const hd = $('#heroDelta');
+    if (hd){ hd.textContent = pct(delta); hd.className = delta >= 0 ? 'up' : 'down'; }
+    set('heroPremium', '+' + nf(premium, 0) + ' %');
+    const spark = $('#heroSpark');
+    if (spark) spark.innerHTML = dualSparkline(d.official.slice(-12).map(p=>p.value), d.parallel.slice(-12).map(p=>p.value));
+  }
+
+  /* ---------- render: KPIs ---------- */
+  function renderKPIs(){
+    const d = state.data.EUR;
+    if (!d) return;
+    const last = lastOf(d.official), par = lastOf(d.parallel);
+    const prev = d.official[d.official.length-2] || last;
+    const prevPar = d.parallel[d.parallel.length-2] || par;
+    const delta = (last.value / prev.value - 1) * 100;
+    const parDelta = (par.value / prevPar.value - 1) * 100;
+    const premium = (par.value / last.value - 1) * 100;
+    const first = d.official[0], firstPar = d.parallel[0];
+    const dep = (1 - first.value / last.value) * 100;
+    const parDep = (1 - firstPar.value / par.value) * 100;
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('kpiOfficial', smart(last.value));
+    set('kpiParallel', smart(par.value));
+    set('kpiPremium', '+' + nf(premium, 0) + ' %');
+    set('kpiDep', '−' + nf(dep, 1) + ' %');
+    const dEl = $('#kpiOfficialDelta');
+    if (dEl){ dEl.textContent = pct(delta) + ' sur 1 mois'; dEl.className = 'kpi-delta ' + (delta >= 0 ? 'up' : 'down'); }
+    const pEl = $('#kpiParallelDelta');
+    if (pEl){ pEl.textContent = pct(parDelta) + ' sur 1 mois'; pEl.className = 'kpi-delta ' + (parDelta >= 0 ? 'up' : 'down'); }
+    set('kpiOfficialFoot', 'Cours de référence · 1 € = ' + smart(last.value) + ' DZD');
+    set('kpiParallelFoot', 'Estimation · prime de ' + nf(premium, 0) + ' %');
+    set('kpiPremiumFoot', 'Sur le taux EUR / DZD · ajustable');
+    set('kpiDepFoot', 'Officiel −' + nf(dep, 1) + ' % · parallèle −' + nf(parDep, 1) + ' %');
+    const total = last.value + (par.value - last.value);
+    const greenW = clamp((last.value / total) * 100, 4, 96);
+    const gg = $('#kpiGaugeGreen'), gr = $('#kpiGaugeRed');
+    if (gg) gg.style.width = greenW + '%';
+    if (gr) gr.style.width = (100 - greenW) + '%';
+    const dg = $('#kpiDepGreen'), dr = $('#kpiDepRed');
+    if (dg) dg.style.width = clamp(100 - dep, 4, 96) + '%';
+    if (dr) dr.style.width = clamp(dep, 4, 96) + '%';
+    const os = $('#kpiOfficialSpark'); if (os) os.innerHTML = sparkline(d.official.slice(-12).map(p=>p.value), '#5BE0A4');
+    const ps = $('#kpiParallelSpark'); if (ps) ps.innerHTML = sparkline(d.parallel.slice(-12).map(p=>p.value), '#FF7557');
+  }
+
+  /* ---------- render: main chart ---------- */
+  function renderMain(){
+    const d = state.data[state.selected];
+    if (!d) return;
+    const c = CURRENCIES.find(x => x.code === state.selected);
+    const last = lastOf(d.official), par = lastOf(d.parallel);
+    const prev = d.official[d.official.length-2] || last;
+    const delta = (last.value / prev.value - 1) * 100;
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('chartPair', state.selected + ' / DZD');
+    set('chartOfficial', smart(last.value));
+    set('chartParallel', smart(par.value));
+    const cd = $('#chartDelta');
+    if (cd){ cd.textContent = pct(delta) + ' 1M'; cd.className = 'chg ' + (delta >= 0 ? 'up' : 'down'); cd.style.background = delta >= 0 ? 'var(--green-dim)' : 'var(--red-dim)'; }
+    set('chartSub', 'DZD par ' + (c ? c.name.toLowerCase() : 'unité') + ' · mensuel');
+    set('chartLegendSource', state.live ? 'Source : Banque d\'Algérie · API' : 'Source : données de secours');
+    const badge = $('#chartSourceBadge');
+    if (badge){
+      badge.className = 'badge ' + (state.live ? 'green' : 'red');
+      badge.innerHTML = `<i style="width:4px;height:4px;border-radius:50%;background:${state.live ? 'var(--green)' : 'var(--red)'};display:inline-block"></i> ${state.live ? 'API officielle' : 'Mode démo'}`;
+    }
+    $$('#currencyTabs .tab').forEach(t => {
+      const on = t.dataset.code === state.selected;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-pressed', String(on));
+    });
+    $$('#rangeBtns button').forEach(b => b.classList.toggle('active', Number(b.dataset.range) === state.range));
+    $$('#chartModeBtns button').forEach(b => b.classList.toggle('active', b.dataset.mode === state.chartMode));
+
+    if (!mainChart) return;
+    const n = d.official.length;
+    const start = Math.max(0, n - state.range);
+    const offSlice = d.official.slice(start);
+    const parSlice = d.parallel.slice(start);
+    const labels = offSlice.map(p => fmtMonth(p.date));
+
+    if (state.chartMode === 'premium'){
+      const premium = offSlice.map((p, i) => (parSlice[i].value / p.value - 1) * 100);
+      const ctx = mainChart.ctx;
+      const grad = ctx.createLinearGradient(0, 0, 0, 300);
+      grad.addColorStop(0, 'rgba(232,200,124,.22)');
+      grad.addColorStop(1, 'rgba(232,200,124,0)');
+      mainChart.data.labels = labels;
+      mainChart.data.datasets = [{
+        label:'Prime parallèle', data:premium, borderColor:'#E8C87C', backgroundColor:grad,
+        fill:true, borderWidth:2, tension:.35, pointRadius:0, pointHoverRadius:4,
+        pointHoverBackgroundColor:'#0B120E', pointHoverBorderColor:'#E8C87C', pointHoverBorderWidth:2
+      }];
+      mainChart.options.scales.y.ticks.callback = v => nf(v, 0) + ' %';
+      mainChart.options.plugins.tooltip.callbacks = {
+        label: ctx => ' Prime : ' + nf(ctx.parsed.y, 1) + ' %'
+      };
+    } else {
+      const ctx = mainChart.ctx;
+      const grad = ctx.createLinearGradient(0, 0, 0, 320);
+      grad.addColorStop(0, 'rgba(91,224,164,.20)');
+      grad.addColorStop(1, 'rgba(91,224,164,0)');
+      mainChart.data.labels = labels;
+      mainChart.data.datasets = [
+        {
+          label:'Officiel', data:offSlice.map(p => p.value), borderColor:'#5BE0A4', backgroundColor:grad,
+          fill:true, borderWidth:2, tension:.35, pointRadius:0, pointHoverRadius:4,
+          pointHoverBackgroundColor:'#0B120E', pointHoverBorderColor:'#5BE0A4', pointHoverBorderWidth:2
+        },
+        {
+          label:'Parallèle (est.)', data:parSlice.map(p => p.value), borderColor:'#FF7557', backgroundColor:'transparent',
+          fill:false, borderWidth:1.7, tension:.35, pointRadius:0, pointHoverRadius:4,
+          pointHoverBackgroundColor:'#0B120E', pointHoverBorderColor:'#FF7557', pointHoverBorderWidth:2
+        }
+      ];
+      mainChart.options.scales.y.ticks.callback = v => nf(v, Math.abs(v) < 10 ? 3 : 1);
+      mainChart.options.plugins.tooltip.callbacks = {
+        label: ctx => ' ' + ctx.dataset.label + ' : ' + smart(ctx.parsed.y) + ' DZD'
+      };
+    }
+    mainChart.update();
+  }
+
+  /* ---------- render: converter ---------- */
+  function renderConverter(){
+    const rates = ratesFor(state.market);
+    const amount = Math.max(0, parseFloat($('#convAmount').value) || 0);
+    const from = state.from, to = state.to;
+    const inDZD = from === 'DZD' ? amount : amount * (rates[from] || 0);
+    const result = to === 'DZD' ? inDZD : inDZD / (rates[to] || 1);
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('convResult', smart(result));
+    set('convResultCode', to);
+    set('convFromLabel', from);
+    set('convToLabel', to);
+    const badge = $('#convMarketBadge');
+    if (badge){ badge.textContent = state.market === 'official' ? 'Officiel' : 'Parallèle · est.'; badge.className = 'badge ' + (state.market === 'official' ? 'green' : 'est'); }
+    const eff = amount > 0 ? result / amount : 0;
+    set('convRate', '1 ' + from + ' = ' + smart(eff) + ' ' + to);
+    set('convInverse', '1 ' + to + ' = ' + smart(eff > 0 ? 1 / eff : 0) + ' ' + from);
+    const altMarket = state.market === 'official' ? 'parallel' : 'official';
+    const altRates = ratesFor(altMarket);
+    const altInDZD = from === 'DZD' ? amount : amount * (altRates[from] || 0);
+    const altResult = to === 'DZD' ? altInDZD : altInDZD / (altRates[to] || 1);
+    set('convAlt', 'Au taux ' + (altMarket === 'official' ? 'officiel' : 'parallèle estimé') + ' : ' + smart(altResult) + ' ' + to);
+    $$('#convMarketBtns button').forEach(b => b.classList.toggle('active', b.dataset.market === state.market));
+  }
+
+  /* ---------- render: table ---------- */
+  function renderTable(){
+    const body = $('#rateTableBody');
+    if (!body) return;
+    let rows = CURRENCIES.map(c => {
+      const d = state.data[c.code];
+      const last = lastOf(d.official), par = lastOf(d.parallel);
+      const prev = d.official[d.official.length-2] || last;
+      return {
+        code:c.code, name:c.name, symbol:c.symbol,
+        official:last.value, parallel:par.value,
+        premium:(par.value / last.value - 1) * 100,
+        delta:(last.value / prev.value - 1) * 100,
+        spark:d.official.slice(-6).map(p => p.value)
+      };
+    });
+    const { key, dir } = state.sort;
+    rows.sort((a,b) => {
+      if (key === 'code') return a.code.localeCompare(b.code) * dir;
+      return (a[key] - b[key]) * dir;
+    });
+    body.innerHTML = rows.map(r => `
+      <tr class="${state.selected === r.code ? 'selected' : ''}" data-code="${r.code}">
+        <td><div class="cur-cell"><span class="cur-badge" aria-hidden="true">${r.symbol}</span><div><b>${r.code}</b><span>${r.name}</span></div></div></td>
+        <td class="num">${smart(r.official)}</td>
+        <td class="num par">${smart(r.parallel)}</td>
+        <td><span class="pill red">+${nf(r.premium, 0)} %</span></td>
+        <td><div class="trend-cell">${sparkline(r.spark, r.delta >= 0 ? '#5BE0A4' : '#FF7557', false)}<span class="${r.delta >= 0 ? 'up' : 'down'}">${pct(r.delta)}</span></div></td>
+        <td><button type="button" class="row-btn" data-code="${r.code}">Voir</button></td>
+      </tr>`).join('');
+    $$('#rateTableBody .row-btn').forEach(btn => btn.addEventListener('click', () => {
+      selectCurrency(btn.dataset.code);
+      document.getElementById('aujourdhui').scrollIntoView({ behavior:reduceMotion ? 'auto' : 'smooth', block:'start' });
+    }));
+    $$('#rateTableBody tr').forEach(tr => tr.addEventListener('click', e => {
+      if (e.target.closest('.row-btn')) return;
+      selectCurrency(tr.dataset.code);
+    }));
+    $$('table.rates th').forEach(th => {
+      const btn = th.querySelector('button[data-sort]');
+      if (!btn) return;
+      const active = btn.dataset.sort === key;
+      th.setAttribute('aria-sort', active ? (dir === 1 ? 'ascending' : 'descending') : 'none');
+      const ind = btn.querySelector('.ind');
+      if (ind) ind.textContent = active ? (dir === 1 ? '↑' : '↓') : '↕';
+    });
+    const slider = $('#premiumSlider');
+    if (slider) slider.value = String(state.premiumAdjust);
+    const out = $('#premiumValue');
+    if (out) out.textContent = '×' + nf(state.premiumAdjust, 2);
+  }
+
+  /* ---------- annual helpers ---------- */
+  function annualAverages(official, parallel){
+    const years = Array.from(new Set(official.map(p => p.date.getFullYear()))).sort((a,b) => a-b);
+    return years.map(y => {
+      const o = official.filter(p => p.date.getFullYear() === y).map(p => p.value);
+      const p = parallel.filter(p => p.date.getFullYear() === y).map(p => p.value);
+      return { year:y, official:avg(o), parallel:avg(p) };
+    });
+  }
+
+  /* ---------- render: history ---------- */
+  function renderHistory(){
+    const d = state.data[state.historyCurrency];
+    if (!d) return;
+    const c = CURRENCIES.find(x => x.code === state.historyCurrency);
+    const annual = annualAverages(d.official, d.parallel);
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('historySub', 'DZD pour 1 ' + state.historyCurrency + ' · 2015 — 2026');
+    set('insightsSub', state.historyCurrency + ' / DZD');
+    set('historyLegendSource', state.live ? 'Source : Banque d\'Algérie · API' : 'Source : données de secours');
+    if (historyChart){
+      historyChart.data.labels = annual.map(a => a.year);
+      historyChart.data.datasets = [
+        {
+          type:'bar', label:'Officiel', data:annual.map(a => a.official), backgroundColor:'#2FA97A',
+          hoverBackgroundColor:'#5BE0A4', borderRadius:4, borderSkipped:false, yAxisID:'y', order:2,
+          barPercentage:.72, categoryPercentage:.62
+        },
+        {
+          type:'bar', label:'Parallèle (est.)', data:annual.map(a => a.parallel), backgroundColor:'rgba(255,117,87,.5)',
+          hoverBackgroundColor:'#FF7557', borderRadius:4, borderSkipped:false, yAxisID:'y', order:2,
+          barPercentage:.72, categoryPercentage:.62
+        },
+        {
+          type:'line', label:'Prime', data:annual.map(a => (a.parallel / a.official - 1) * 100),
+          borderColor:'#E8C87C', backgroundColor:'#E8C87C', borderWidth:1.8, tension:.35,
+          pointRadius:2.5, pointBackgroundColor:'#0B120E', pointBorderColor:'#E8C87C', pointBorderWidth:1.5,
+          yAxisID:'y1', order:1
+        }
+      ];
+      historyChart.options.plugins.tooltip.callbacks = {
+        label: ctx => {
+          if (ctx.dataset.label === 'Prime') return ' Prime : ' + nf(ctx.parsed.y, 1) + ' %';
+          return ' ' + ctx.dataset.label + ' : ' + smart(ctx.parsed.y) + ' DZD';
+        }
+      };
+      historyChart.update();
+    }
+    const first = annual[0], last = annual[annual.length-1];
+    const dep = (1 - first.official / last.official) * 100;
+    const parDep = (1 - first.parallel / last.parallel) * 100;
+    const avgPremium = avg(annual.map(a => (a.parallel / a.official - 1) * 100));
+    const peak = annual.reduce((m,a) => a.official > m.official ? a : m, annual[0]);
+    set('insDep', '−' + nf(dep, 1) + ' %');
+    set('insParDep', '−' + nf(parDep, 1) + ' %');
+    set('insPremium', '+' + nf(avgPremium, 0) + ' %');
+    set('insPeak', nf(peak.official, 1) + ' DZD');
+    const ins = $('#insSentence');
+    if (ins) ins.innerHTML = `Depuis 2015, le dinar a perdu <b>${nf(dep,1)} %</b> de sa valeur face à ${state.historyCurrency === 'EUR' ? "l'euro" : 'la devise'} sur le marché officiel, et <b>${nf(parDep,1)} %</b> sur le marché parallèle estimé. Le point le plus haut est atteint en <b>${peak.year}</b>.`;
+    const tbody = $('#yearTableBody');
+    if (tbody){
+      const currentYear = new Date().getFullYear();
+      tbody.innerHTML = annual.slice().reverse().map((a, i, arr) => {
+        const prev = arr[i+1];
+        const variation = prev ? (a.official / prev.official - 1) * 100 : null;
+        return `<tr class="${a.year === currentYear ? 'current' : ''}">
+          <td>${a.year}${a.year === currentYear ? ' · en cours' : ''}</td>
+          <td>${nf(a.official, 2)}</td>
+          <td class="par">${nf(a.parallel, 2)}</td>
+          <td class="${variation === null ? '' : (variation >= 0 ? 'down' : 'up')}">${variation === null ? '—' : pct(variation)}</td>
+          <td>+${nf((a.parallel / a.official - 1) * 100, 0)} %</td>
+        </tr>`;
+      }).join('');
+    }
+  }
+
+  /* ---------- forecast helpers ---------- */
+  function computeForecast(series){
+    const annual = annualAverages(series, series);
+    const last = annual[annual.length-1];
+    const first10 = annual[0];
+    const first5 = annual[Math.max(0, annual.length-5)];
+    const cagr10 = Math.pow(last.official / first10.official, 1 / Math.max(1, last.year - first10.year)) - 1;
+    const cagr5 = Math.pow(last.official / first5.official, 1 / Math.max(1, last.year - first5.year)) - 1;
+    const central = 0.5 * cagr10 + 0.5 * cagr5;
+    return {
+      annual, last, first10, first5, cagr10, cagr5, central,
+      pessimistic: central + 0.025,
+      optimistic: central - 0.02
+    };
+  }
+
+  /* ---------- render: forecast ---------- */
+  function renderForecast(){
+    const d = state.data[state.forecastCurrency];
+    if (!d) return;
+    const c = CURRENCIES.find(x => x.code === state.forecastCurrency);
+    const series = state.forecastMarket === 'official' ? d.official : d.parallel;
+    const f = computeForecast(series);
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('forecastSub', 'Scénarios de tendance · ' + state.forecastCurrency + ' / DZD ' + (state.forecastMarket === 'official' ? 'officiel' : 'parallèle estimé'));
+    set('forecastLegendSource', 'CAGR 10 ans : ' + nf(f.cagr10*100, 1) + ' % · 5 ans : ' + nf(f.cagr5*100, 1) + ' %');
+    const hist = f.annual.slice(-5);
+    const years = [2027, 2028, 2029, 2030];
+    const project = rate => years.map(y => f.last.official * Math.pow(1 + rate, y - f.last.year));
+    const central = project(f.central);
+    const pessimistic = project(f.pessimistic);
+    const optimistic = project(f.optimistic);
+    if (forecastChart){
+      const labels = [...hist.map(h => h.year), ...years];
+      const pad = hist.length - 1;
+      const histData = [...hist.map(h => h.official), ...years.map(() => null)];
+      const anchor = f.last.official;
+      const centralData = [...Array(pad).fill(null), anchor, ...central];
+      const pessData = [...Array(pad).fill(null), anchor, ...pessimistic];
+      const optData = [...Array(pad).fill(null), anchor, ...optimistic];
+      const focus = state.forecastFocus;
+      const alpha = key => (focus === 'all' || focus === key) ? 1 : 0.16;
+      const optColor = `rgba(91,224,164,${0.7 * alpha('optimistic')})`;
+      const pessColor = `rgba(255,117,87,${0.7 * alpha('pessimistic')})`;
+      const centralColor = `rgba(232,200,124,${alpha('central')})`;
+      forecastChart.data.labels = labels;
+      forecastChart.data.datasets = [
+        {
+          label:'Historique', data:histData, borderColor:state.forecastMarket === 'official' ? '#5BE0A4' : '#FF7557',
+          backgroundColor:'transparent', borderWidth:2.2, tension:.35, pointRadius:2.5,
+          pointBackgroundColor:'#0B120E', pointBorderColor:state.forecastMarket === 'official' ? '#5BE0A4' : '#FF7557',
+          pointBorderWidth:1.6, spanGaps:false
+        },
+        {
+          label:'Optimiste', data:optData, borderColor:optColor, backgroundColor:'transparent',
+          borderWidth:1.4, borderDash:[4,4], tension:.3, pointRadius:0, spanGaps:false
+        },
+        {
+          label:'Pessimiste', data:pessData, borderColor:pessColor, backgroundColor:'rgba(232,200,124,.055)',
+          borderWidth:1.4, borderDash:[4,4], tension:.3, pointRadius:0, fill:'-1', spanGaps:false
+        },
+        {
+          label:'Central', data:centralData, borderColor:centralColor, backgroundColor:'transparent',
+          borderWidth:2, borderDash:[6,4], tension:.3, pointRadius:2.5, pointBackgroundColor:'#0B120E',
+          pointBorderColor:centralColor, pointBorderWidth:1.6, spanGaps:false
+        }
+      ];
+      forecastChart.options.plugins.tooltip.callbacks = {
+        label: ctx => ctx.parsed.y === null ? '' : ' ' + ctx.dataset.label + ' : ' + smart(ctx.parsed.y) + ' DZD'
+      };
+      forecastChart.update();
+    }
+    const cards = [
+      { key:'central', name:'Central', rate:f.central, value:central[3], desc:'La tendance récente se prolonge, sans choc majeur.' },
+      { key:'pessimistic', name:'Pessimiste', rate:f.pessimistic, value:pessimistic[3], desc:'Accélération de la dépréciation, pression sur les réserves.' },
+      { key:'optimistic', name:'Optimiste', rate:f.optimistic, value:optimistic[3], desc:'Stabilisation, portée par les recettes et la confiance.' }
+    ];
+    const wrap = $('#scenarioCards');
+    if (wrap){
+      wrap.innerHTML = cards.map(s => {
+        const change = (s.value / f.last.official - 1) * 100;
+        return `<button type="button" class="scenario ${s.key} ${state.forecastFocus === s.key ? 'active' : ''}" data-scenario="${s.key}" aria-pressed="${state.forecastFocus === s.key}">
+          <span class="scenario-top"><span class="scenario-name"><i></i> ${s.name}</span><span class="badge">${nf(s.rate*100,1)} %/an</span></span>
+          <span class="scenario-val">${smart(s.value)} <small>DZD</small></span>
+          <span class="scenario-bottom"><span class="scenario-change">${pct(change)} d'ici 2030</span><span class="mono" style="font-size:8px;color:var(--muted-2)">2030</span></span>
+          <span class="scenario-desc">${s.desc}</span>
+        </button>`;
+      }).join('');
+      $$('#scenarioCards .scenario').forEach(btn => btn.addEventListener('click', () => {
+        const key = btn.dataset.scenario;
+        state.forecastFocus = state.forecastFocus === key ? 'all' : key;
+        renderForecast();
+      }));
+    }
+  }
+
+  /* ---------- render all ---------- */
+  function renderAll(){
+    renderStatus();
+    renderTicker();
+    renderHero();
+    renderKPIs();
+    renderMain();
+    renderConverter();
+    renderTable();
+    renderHistory();
+    renderForecast();
+    renderMethod();
+  }
+
+  function renderMethod(){
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    set('methodDate', state.sourceDate ? 'Série au ' + fmtDate(state.sourceDate) : 'Série en cours de chargement');
+    set('methodStatus', state.live ? 'Estimation connectée · prime ajustable' : 'Estimation de secours · prime ajustable');
+  }
+
+  /* ---------- currency tabs / selects ---------- */
+  function buildControls(){
+    const tabs = $('#currencyTabs');
+    if (tabs){
+      tabs.innerHTML = CURRENCIES.map(c => `<button type="button" class="tab ${c.code === state.selected ? 'active' : ''}" data-code="${c.code}" aria-pressed="${c.code === state.selected}">${c.code}</button>`).join('');
+      $$('#currencyTabs .tab').forEach(btn => btn.addEventListener('click', () => selectCurrency(btn.dataset.code)));
+    }
+    const options = CURRENCIES.map(c => `<option value="${c.code}">${c.code} — ${c.name}</option>`).join('');
+    const hc = $('#historyCurrency');
+    if (hc){ hc.innerHTML = options; hc.value = state.historyCurrency; hc.addEventListener('change', () => { state.historyCurrency = hc.value; renderHistory(); }); }
+    const fc = $('#forecastCurrency');
+    if (fc){ fc.innerHTML = options; fc.value = state.forecastCurrency; fc.addEventListener('change', () => { state.forecastCurrency = fc.value; renderForecast(); }); }
+    const from = $('#convFrom');
+    if (from){
+      from.innerHTML = `<option value="DZD">DZD — Dinar algérien</option>` + options;
+      from.value = state.from;
+      from.addEventListener('change', () => { state.from = from.value; renderConverter(); });
+    }
+    const to = $('#convTo');
+    if (to){
+      to.innerHTML = `<option value="DZD">DZD — Dinar algérien</option>` + options;
+      to.value = state.to;
+      to.addEventListener('change', () => { state.to = to.value; renderConverter(); });
+    }
+  }
+
+  function selectCurrency(code){
+    if (!state.data[code]) return;
+    state.selected = code;
+    renderTicker();
+    renderMain();
+    renderTable();
+  }
+
+  /* ---------- data loading ---------- */
+  async function fetchLatest(){
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 9000);
+    try {
+      const res = await fetch(API + '/rates?base=dzd&quotes=eur,usd,gbp,cad,chf,try,aed', { signal:controller.signal, headers:{ 'Accept':'application/json' } });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const json = await res.json();
+      if (!Array.isArray(json)) throw new Error('Format inattendu');
+      const map = {};
+      let date = null;
+      json.forEach(row => {
+        if (!row || !row.quote || !row.rate) return;
+        map[row.quote.toUpperCase()] = 1 / row.rate;
+        const d = parseDate(row.date);
+        if (d && (!date || d > date)) date = d;
+      });
+      return { map, date };
+    } finally { clearTimeout(timer); }
+  }
+
+  async function fetchHistory(code){
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    try {
+      const today = new Date();
+      const iso = today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0');
+      const res = await fetch(`${API}/rates?base=${code.toLowerCase()}&quotes=dzd&from=2015-01-01&to=${iso}&group=month`, { signal:controller.signal, headers:{ 'Accept':'application/json' } });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const json = await res.json();
+      if (!Array.isArray(json)) throw new Error('Format inattendu');
+      const out = json.map(row => ({ date:parseDate(row.date), value:row.rate })).filter(p => p.date && p.value);
+      out.sort((a,b) => a.date - b.date);
+      return out;
+    } finally { clearTimeout(timer); }
+  }
+
+  async function loadData(showToast){
+    state.loading = true;
+    renderStatus();
+    const refreshBtn = $('#refreshBtn');
+    if (refreshBtn) refreshBtn.classList.add('spinning');
+    try {
+      const [latest, histories] = await Promise.all([
+        fetchLatest().catch(() => null),
+        Promise.all(CURRENCIES.map(c => fetchHistory(c.code).catch(() => null)))
+      ]);
+      let anyLive = false;
+      histories.forEach((series, i) => {
+        if (series && series.length > 12){
+          state.data[CURRENCIES[i].code].official = series;
+          anyLive = true;
+        }
+      });
+      if (latest && Object.keys(latest.map).length){
+        CURRENCIES.forEach(c => {
+          const live = latest.map[c.code];
+          if (!live) return;
+          const d = state.data[c.code];
+          const last = lastOf(d.official);
+          if (latest.date && last && monthKey(latest.date) === monthKey(last.date)) last.value = live;
+          else if (latest.date) d.official.push({ date:latest.date, value:live });
+          anyLive = true;
+        });
+        if (latest.date && (!state.sourceDate || latest.date > state.sourceDate)) state.sourceDate = latest.date;
+      }
+      if (!state.sourceDate){
+        const dates = CURRENCIES.map(c => lastOf(state.data[c.code].official).date).filter(Boolean);
+        state.sourceDate = dates.length ? new Date(Math.max(...dates)) : new Date();
+      }
+      state.live = anyLive;
+      state.lastUpdated = new Date();
+      recalcParallel();
+      renderAll();
+      if (showToast) toast(anyLive ? 'Taux actualisés' : 'Données de secours utilisées', anyLive);
+    } catch (err) {
+      state.live = false;
+      state.lastUpdated = new Date();
+      renderAll();
+      if (showToast) toast('Connexion impossible — mode démo', false);
+    } finally {
+      state.loading = false;
+      if (refreshBtn) refreshBtn.classList.remove('spinning');
+      renderStatus();
+    }
+  }
+
+  /* ---------- toast ---------- */
+  let toastTimer = null;
+  function toast(message, ok){
+    const el = $('#toast'), txt = $('#toastText');
+    if (!el) return;
+    txt.textContent = message;
+    el.classList.toggle('error', !ok);
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 3800);
+  }
+
+  /* ---------- events ---------- */
+  function bindEvents(){
+    const refresh = $('#refreshBtn');
+    if (refresh) refresh.addEventListener('click', () => loadData(true));
+
+    $$('#rangeBtns button').forEach(btn => btn.addEventListener('click', () => {
+      state.range = Number(btn.dataset.range);
+      renderMain();
+    }));
+    $$('#chartModeBtns button').forEach(btn => btn.addEventListener('click', () => {
+      state.chartMode = btn.dataset.mode;
+      renderMain();
+    }));
+    $$('#convMarketBtns button').forEach(btn => btn.addEventListener('click', () => {
+      state.market = btn.dataset.market;
+      renderConverter();
+    }));
+    const amount = $('#convAmount');
+    if (amount) amount.addEventListener('input', renderConverter);
+    const swap = $('#convSwap');
+    if (swap) swap.addEventListener('click', () => {
+      const prevFrom = state.from;
+      state.from = state.to;
+      state.to = prevFrom;
+      const fromEl = $('#convFrom'), toEl = $('#convTo');
+      if (fromEl) fromEl.value = state.from;
+      if (toEl) toEl.value = state.to;
+      renderConverter();
+    });
+    $$('#forecastMarketBtns button').forEach(btn => btn.addEventListener('click', () => {
+      state.forecastMarket = btn.dataset.market;
+      $$('#forecastMarketBtns button').forEach(b => b.classList.toggle('active', b === btn));
+      renderForecast();
+    }));
+    const slider = $('#premiumSlider');
+    if (slider) slider.addEventListener('input', () => {
+      state.premiumAdjust = Number(slider.value);
+      recalcParallel();
+      renderTicker(); renderHero(); renderKPIs(); renderMain(); renderConverter(); renderTable(); renderHistory(); renderForecast();
+      const out = $('#premiumValue'); if (out) out.textContent = '×' + nf(state.premiumAdjust, 2);
+    });
+    const reset = $('#premiumReset');
+    if (reset) reset.addEventListener('click', () => {
+      state.premiumAdjust = 1;
+      if (slider) slider.value = '1';
+      recalcParallel();
+      renderTicker(); renderHero(); renderKPIs(); renderMain(); renderConverter(); renderTable(); renderHistory(); renderForecast();
+      const out = $('#premiumValue'); if (out) out.textContent = '×1,00';
+    });
+    $$('table.rates th button[data-sort]').forEach(btn => btn.addEventListener('click', () => {
+      const key = btn.dataset.sort;
+      if (state.sort.key === key) state.sort.dir *= -1;
+      else state.sort = { key, dir:key === 'code' ? 1 : -1 };
+      renderTable();
+    }));
+    $$('[data-footer-currency]').forEach(btn => btn.addEventListener('click', () => {
+      selectCurrency(btn.dataset.footerCurrency);
+      document.getElementById('aujourdhui').scrollIntoView({ behavior:reduceMotion ? 'auto' : 'smooth', block:'start' });
+    }));
+
+    // menu
+    const menuBtn = $('#menuBtn'), mobileMenu = $('#mobileMenu');
+    const setMenu = open => {
+      if (!menuBtn || !mobileMenu) return;
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      mobileMenu.classList.toggle('open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+      if (open) document.body.classList.add('locked');
+      else if (!document.querySelector('.modal.open')) document.body.classList.remove('locked');
+    };
+    if (menuBtn) menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+    $$('#mobileMenu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+    window.addEventListener('resize', () => { if (window.innerWidth > 1120) setMenu(false); });
+
+    // header / progress / top
+    const header = $('#siteHeader'), progress = $('#progress'), toTop = $('#toTop');
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (header) header.classList.toggle('scrolled', y > 20);
+      if (toTop) toTop.classList.toggle('show', y > 700);
+      if (progress){
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+    if (toTop) toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:reduceMotion ? 'auto' : 'smooth' }));
+
+    // reveal
+    const reveals = $$('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion){
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+      }, { threshold:0.1, rootMargin:'0px 0px -6% 0px' });
+      reveals.forEach(el => io.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('in'));
+    }
+
+    // active nav
+    const navLinks = $$('.nav-link');
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    if ('IntersectionObserver' in window && sections.length){
+      const navIO = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        });
+      }, { rootMargin:'-40% 0px -55% 0px' });
+      sections.forEach(s => navIO.observe(s));
+    }
+  }
+
+  /* ---------- clock ---------- */
+  function startClock(){
+    const els = $$('[data-algiers-time]');
+    const tick = () => {
+      const t = new Intl.DateTimeFormat('fr-FR', { timeZone:'Africa/Algiers', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false }).format(new Date());
+      els.forEach(el => el.textContent = t);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  /* ---------- init ---------- */
+  function init(){
+    buildFallback();
+    buildControls();
+    initCharts();
+    bindEvents();
+    renderAll();
+    startClock();
+    loadData(false);
+    // rafraîchissement automatique des cours (toutes les 5 min)
+    setInterval(() => { if (!document.hidden) loadData(false); }, 5 * 60 * 1000);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
